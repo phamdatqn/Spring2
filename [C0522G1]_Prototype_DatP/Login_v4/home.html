@@ -6,6 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container-fluid">
@@ -17,30 +18,35 @@
             THỜI TRANG NAM - CÔNG SỞ ONLINE - Hotline: 1900.9999 (08h00 - 22h00)
         </div>
         <div class="col-lg-2" style="margin-top: 4%">
-            <a href="#">Tài khoản</a>
-
-            <a href="#">
-                <span class='bi bi-cart3'></span>
-                Giỏ hàng
-            </a>
+            <div class="row">
+                <div class="col-lg-6">
+                    <a class="nav-link dropdown-toggle colorA" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        <i class="fa-brands fa-product-hunt"></i> Đăng nhập
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-danger">
+                        <li><a class="dropdown-item" routerLink="/moviePlay">Đăng ký</a></li>
+                        <li><a class="dropdown-item" routerLink="/moviePremiere">Đăng nhập</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6" style="margin-top: 2.2%">
+                    <a href="#">
+                        <span class='bi bi-cart3'></span>
+                        Giỏ hàng
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <nav class="navbar navbar-expand-lg navbar-light backgroundFooter"
-             style="background: green;height: 40px">
-            <a class="navbar-brand chu_menu" href="http://localhost:63342/case_study/case/home.html?"
-               style="color: white;margin-left: 2%">TRANG CHỦ</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
+    <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light backgroundFooter doiMau"
+             style="background: #DF1442;height: 40px">
             <div class="collapse navbar-collapse" id="navbarEmployee">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle chu_menu" href="#" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                    <li class="nav-item dropdown doiMau">
+                        <a class="nav-link dropdown-toggle doiMau" href="#" role="button"
+                           data-bs-toggle="dropdown" style="color: white">
                             ÁO NAM
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarEmployee">
@@ -128,7 +134,6 @@
                                     <span style="color: green">Quần lót</span>
                                 </a>
                             </li>
-
                         </ul>
                     </li>
 
@@ -140,19 +145,294 @@
                     </li>
                 </ul>
             </div>
-            <form class="d-flex align-items-center m-2 ">
-            <span class="btn btn-outline-success chu_menu"
-                  style="font-family:courier,arial,helvetica;color: orange">
-                <strong>
-                <a href="https://www.facebook.com/phamdat.s2" style="color: white;text-decoration: none"
-                   target="_blank"> <span
-                        class=' bi-facebook' style="color: #00aeef"></span> Đạt Phạm</a>
-                </strong>
-            </span>
-                <span>&ensp;</span>
-            </form>
+
         </nav>
     </div>
+
+
+    <div class="row">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8 ">
+            <div class="row">
+                <p style="text-align: center">
+                    <img src="../images/coollogo.gif">
+                    <span style="color: #DF1442;font-size: 30px"> Mới nhất</span>
+                </p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="card 1">
+                        <a class="card_image">
+                            <img src="https://img.zanado.com/media/catalog/product/cache/all/thumbnail/360x420/7b8fef0172c2eb72dd8fd366c999954c/4/_/ao_khoac_kaki_nam_clam_c381.jpg"/>
+                        </a>
+                        <div class="card_title title-white mb-5">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="card ">
+                        <a class="card_image">
+                            <img src="https://img.zanado.com/media/catalog/product/cache/all/thumbnail/255x298/7b8fef0172c2eb72dd8fd366c999954c/1/_/ao_so_mi_nam_ke_soc_mot_tre_asd025_602b.jpg"/>
+                        </a>
+                        <div class="card_title title-white mb-5">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="card 2 ">
+                        <a class="card_image ">
+                            <img src="https://img.zanado.com/media/catalog/product/cache/all/thumbnail/255x298/7b8fef0172c2eb72dd8fd366c999954c/1/_/quan_boi_nam_phoi_hoa_tiet_lan_hanh_50008_d7cd.jpg"/>
+                        </a>
+                        <div class="card_title title-white mb-5">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="card 2 ">
+                        <a class="card_image ">
+                            <img src="https://img.zanado.com/media/catalog/product/cache/all/thumbnail/255x298/7b8fef0172c2eb72dd8fd366c999954c/7/_/bo_do_the_thao_nang_dong_colo_cl1703339_8248.jpg"/>
+                        </a>
+                        <div class="card_title title-white mb-5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="text-align: center">
+                <a href="#">
+                    <button class="btn btn-success">Xem thêm
+                    </button>
+                </a>
+            </div>
+
+            <div class="row" style="margin-top: 5%">
+                <p style="text-align: center">
+                    <img src="../images/coollogo.gif">
+                    <span style="color: #DF1442;font-size: 30px"> Hót nhất</span>
+                </p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="card 1">
+                        <a class="card_image">
+                            <img src="https://img.zanado.com/media/catalog/product/cache/all/thumbnail/255x298/7b8fef0172c2eb72dd8fd366c999954c/1/_/combo_3_quan_lot_nam_sieu_mat_relax_rl036_c291.jpg"/>
+                        </a>
+                        <div class="card_title title-white mb-5">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="card ">
+                        <a class="card_image">
+                            <img src="https://img.zanado.com/media/catalog/product/cache/all/thumbnail/255x298/7b8fef0172c2eb72dd8fd366c999954c/1/_/ao_khoac_nam_akuba_3307_8a7c.jpg"/>
+                        </a>
+                        <div class="card_title title-white mb-5">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="card 2 ">
+                        <a class="card_image ">
+                            <img src="https://img.zanado.com/media/catalog/product/cache/all/thumbnail/255x298/7b8fef0172c2eb72dd8fd366c999954c/1/_/quan_boi_nam_phoi_hoa_tiet_lan_hanh_50008_d7cd.jpg"/>
+                        </a>
+                        <div class="card_title title-white mb-5">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="card 2 ">
+                        <a class="card_image ">
+                            <img src="https://img.zanado.com/media/catalog/product/cache/all/thumbnail/255x298/7b8fef0172c2eb72dd8fd366c999954c/7/_/bo_do_the_thao_nang_dong_colo_cl1703339_8248.jpg"/>
+                        </a>
+                        <div class="card_title title-white mb-5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="text-align: center">
+            <a href="#">
+                <button class="btn btn-success">Xem thêm
+                </button>
+            </a>
+        </div>
+
+        <div class="row" style="height: 20px"></div>
+
+        <div class="col-lg-2"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="row">
+                        <p>
+                            <img src="../images/coollogo.gif" style="width: 60px">
+                            <span style="color: #DF1442;font-size: 15px"> DAT FASHION</span>
+                        </p>
+                    </div>
+
+                    <div class="row">
+                        <a href="#">
+                            Giới thiệu Dat Fashion
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="#">
+                            Giải quyết khiếu nại - Bảo Hành
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="#">
+                            Quy định Giao hàng - Đổi trả hàng
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="#">
+                            Chính sách bảo mật
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="#">
+                            Tuyển Dụng
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="#">
+                            DỊCH VỤ GIAO HÀNG:
+                        </a>
+                        <div class="col-lg-6">
+                            <img src="https://www.zanado.com/skin/frontend/default/thoitrang/images/partner/ghn.jpg">
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="https://www.zanado.com/skin/frontend/default/thoitrang/images/partner/vnpost.jpg">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="row">
+                        <p>
+                            <span style="color: #DF1442;font-size: 15px"> HỢP TÁC</span>
+                        </p>
+                    </div>
+
+                    <div class="row">
+                        <a href="#">
+                            Cung cấp hàng cho Dat Fashion
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="#">
+                            Bán buôn - Bán sỉ
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="#">
+                            Chương trình
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="#">
+                            AFFILIATE
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="#">
+                            Gia công may mặc thời trang
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="#">
+                            Tuyển đại lý
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="row">
+                        <p>
+                            <span style="color: #DF1442;font-size: 15px"> HỖ TRỢ</span>
+                        </p>
+                    </div>
+
+                    <div class="row">
+                        <a href="#">
+                            Cửa hàng showroom Dat Fashion
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="#">
+                            Thanh toán Online
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="#">
+                            Hướng dẫn mua hàng
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="#">
+                            Hỏi đáp
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="#">
+                            Liên hệ
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="row">
+                        <p>
+                            <span style="color: #DF1442;font-size: 15px"> CÔNG TY CP DAT FASHION</span>
+                        </p>
+                    </div>
+
+                    <div class="row">
+                        <a href="#">
+                            GPKD số: 0311304610
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="#">
+                            Do Sở KH & ĐT TP.HCM cấp ngày 02/11/2011
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="#">
+                            Trụ sở chính: 280, An Hải Tây, Sơn Trà, TP.Đà Nẵng
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="#">
+                            Email: support@datfashion.com
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a href="#">
+                            Điện thoại: 1900.9999
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="col-lg-2" style="height: 10px"></div>
 </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
