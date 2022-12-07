@@ -1,3 +1,6 @@
+body{
+  overflow-x: hidden;
+}
 a{
   text-decoration: none;
 }
@@ -8,43 +11,8 @@ a{
 .doiMau:hover {
   color: red;
 }
-
-.cards-list {
-  z-index: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.card {
-  margin: 10px auto;
-  width: 220px;
-  height: 220px;
-  border-radius: 40px;
-  box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
-  cursor: pointer;
-  transition: 0.4s;
-}
-.card .card_image {
-  width: inherit;
-  height: inherit;
-  border-radius: 40px;
-}
-
-.card .card_image img {
-  width: inherit;
-  height: inherit;
-  border-radius: 40px;
-  object-fit: cover;
-}
-
-.card:hover {
-}
-.card_image {
-  width: inherit;
-  height: inherit;
-  border-radius: 40px;
+*{
+  font-family: "courier";
 }
 .thut-hang{
   text-indent:  6%;

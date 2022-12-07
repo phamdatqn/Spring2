@@ -1,0 +1,65 @@
+<main role="main">
+  <h3 class="chuLonTieuDe" style="margin-top: 20px"><strong>Thông tin chi tiết về Sản phẩm</strong></h3>
+  <div class="container mt-4">
+    <div class="card">
+      <div class="container-fliud row" >
+          <div class="col-lg-4">
+            <img src="{{product.image}}" style="width: 350px">
+          </div>
+          <div class="col-lg-8">
+            <div class="row">
+              <span class="tenSanPham">{{product.name}}</span>
+            </div>
+            <div class="row" style="margin-top: 10%">
+              <div class="col-lg-2 moTa">Mô tả: </div>
+              <div class="col-lg-10">
+              <span>{{product.describe}}</span>
+              </div>
+            </div>
+            <div class="row" style="margin-top: 10%">
+              <div class="col-lg-2 moTa">Sizes: </div>
+              <div class="col-lg-10">
+                  <span class="size" data-toggle="tooltip" title="cỡ Nhỏ">s</span>
+                  <span class="size" data-toggle="tooltip" title="cỡ Trung bình">m</span>
+                  <span class="size" data-toggle="tooltip" title="cỡ Lớn">l</span>
+                  <span class="size" data-toggle="tooltip" title="cỡ Đại">xl</span>
+              </div>
+            </div>
+            <div class="row" style="margin-top: 10%">
+              <div class="col-lg-2 moTa">Số lượng: </div>
+              <div class="col-lg-4">
+                <input type="number" class="form-control" id="soluong" name="soluong">
+              </div>
+              <div class="col-lg-6"></div>
+            </div>
+            <div class="row" style="margin-top: 2%">
+              <div class="col-lg-2"></div>
+              <div class="col-lg-4">
+                <a href="#" class="btn-card ">
+                  <span class='bi bi-cart4'></span>
+                  <span style="margin-left: 2%">Thêm vào giỏ hàng</span>
+                </a>
+              </div>
+              <div class="col-lg-6"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="preview col-lg-6">
+            </div>
+            <div class="details col-lg-6">
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>

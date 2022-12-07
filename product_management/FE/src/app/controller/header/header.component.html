@@ -1,0 +1,147 @@
+<div class="row">
+  <div class="col-lg-2">
+    <a routerLink="/product">
+      <img src="../assets/images/LOGO.png" style="width: 90%;margin-left: 24%">
+    </a>
+  </div>
+  <div class="col-lg-7" style="color: black;font-size: 25px;margin-top: 3%;text-align: center">
+    <p style="font-size: 40px">THỜI TRANG NAM - CÔNG SỞ ONLINE </p>
+    <p>Hotline: 1900.9999 (08h00 - 22h00)</p>
+  </div>
+  <div class="col-lg-3" style="margin-top: 5%">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <div class="row logInLogOut">
+          <span class="login" routerLink="/login" *ngIf="username==''">
+            <button>
+              Đăng nhập
+            </button>
+          </span>
+          <span style="color: orange;text-align: center">{{username}}</span>
+            <button class="logout" (click)="whenLogout()" *ngIf="username!=''">
+            Đăng xuất
+           </button>
+        </div>
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <nav class="navbar navbar-expand-lg navbar-light"
+       style="background: #DF1442;height: 40px;font-size: 20px">
+    <div class="collapse navbar-collapse" id="navbarEmployee">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 " style="margin-left: 7%">
+        <li class="nav-item dropdown doiMau">
+          <a class="nav-link dropdown-toggle doiMau" href="#" role="button"
+             data-bs-toggle="dropdown" style="color: white">
+            ÁO NAM
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarEmployee">
+            <li>
+              <a class="dropdown-item" href="#">
+                <span style="color: green">Áo Khoác</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item" href="/employee">
+                <span style="color: green">Áo sơ mi</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item" href="/employee">
+                <span style="color: green">Áo thun</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle chu_menu" href="#" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
+            QUẦN NAM
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarEmployee">
+            <li>
+              <a class="dropdown-item" href="/employee/create">
+                <span style="color: green">Quần Tây</span>
+              </a>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item" href="/employee">
+                <span style="color: green">Quần Short</span>
+              </a>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item" href="/employee">
+                <span style="color: green">Quần Jean</span>
+              </a>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item" href="/employee">
+                <span style="color: green">Quần Kiểu</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link  chu_menu" href="#" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
+            ĐỒ THỂ THAO
+          </a>
+        </li>
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle chu_menu" href="#" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
+            ĐỒ LÓT
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarEmployee">
+            <li>
+              <a class="dropdown-item" href="/employee/create">
+                <span style="color: green">Quần lót</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link chu_menu" href="#" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
+            ĐỒ BƠI - ĐỒ TẮM
+          </a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link  chu_menu" href="#" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
+            <span class='bi bi-cart3'></span>
+            Giỏ hàng
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+</div>

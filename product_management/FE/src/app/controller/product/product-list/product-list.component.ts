@@ -3,6 +3,8 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {IProductDto} from '../../../dto/i-product-dto';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {ProductService} from '../../../service/product.service';
+import {Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product-list',
@@ -10,32 +12,44 @@ import {ProductService} from '../../../service/product.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  searchFormGroup: FormGroup = new FormGroup({
-    nameSearch: new FormControl('')
-  });
-  productList: IProductDto[];
+  // searchFormGroup: FormGroup = new FormGroup({
+  //   nameSearch: new FormControl('')
+  // });
   nameSearch = '';
-  page = 1;
-  pageSize = 5;
-  action: boolean;
+  pageSize = 4;
+  productList$: Observable<IProductDto[]> | undefined;
   total$: Observable<number>;
+  action: boolean;
+  numberRecord = 0;
+  content: boolean;
+  totalRecord = 0;
   productNameDelete: string;
   productIdDelete: number;
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService,
+              private router: Router,
+              private title: Title) {
+    this.title.setTitle('Trang chủ');
   }
 
   ngOnInit(): void {
+    this.paginate(this.nameSearch, this.pageSize);
   }
-  paginate() {
-    this.productService.paginate(this.page, this.pageSize, this.nameSearch).subscribe(data => {
+  paginate(nameSearch, pageSize) {
+    this.productService.findAllListProduct(nameSearch, pageSize).subscribe(data => {
+      console.log(data);
       if (data != null) {
         this.action = true;
-        this.productList = data.content;
+        this.productList$ = new BehaviorSubject<IProductDto[]>(data.content);
         this.total$ = new BehaviorSubject<number>(data.totalElements);
       } else {
         this.action = false;
       }
     });
+  }
+
+  nextPage() {
+    this.pageSize += 4;
+    this.paginate(this.nameSearch, this.pageSize);
   }
 
   getInfoSavingDelete(id: number, name: string): void {
@@ -54,5 +68,4 @@ export class ProductListComponent implements OnInit {
       timer: 1500
     });
   }
-
 }
