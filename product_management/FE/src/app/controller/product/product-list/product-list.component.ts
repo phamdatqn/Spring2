@@ -12,9 +12,6 @@ import {Title} from '@angular/platform-browser';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  // searchFormGroup: FormGroup = new FormGroup({
-  //   nameSearch: new FormControl('')
-  // });
   nameSearch = '';
   pageSize = 4;
   productList$: Observable<IProductDto[]> | undefined;
@@ -32,11 +29,10 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.paginate(this.nameSearch, this.pageSize);
+    this.paginate();
   }
-  paginate(nameSearch, pageSize) {
-    this.productService.findAllListProduct(nameSearch, pageSize).subscribe(data => {
-      console.log(data);
+  paginate() {
+    this.productService.findAllListProduct(this.pageSize, this.nameSearch).subscribe(data => {
       if (data != null) {
         this.action = true;
         this.productList$ = new BehaviorSubject<IProductDto[]>(data.content);
@@ -49,7 +45,7 @@ export class ProductListComponent implements OnInit {
 
   nextPage() {
     this.pageSize += 4;
-    this.paginate(this.nameSearch, this.pageSize);
+    this.paginate();
   }
 
   getInfoSavingDelete(id: number, name: string): void {

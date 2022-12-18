@@ -11,18 +11,11 @@ public class ProductSize {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
+    private Integer productId;
+    private Integer sizeId;
     private int quantity;
-    private boolean isDelete;
 
     public ProductSize() {
-    }
-
-    public ProductSize(Integer id, String name, int quantity, boolean isDelete) {
-        this.id = id;
-        this.name = name;
-        this.quantity = quantity;
-        this.isDelete = isDelete;
     }
 
     public Integer getId() {
@@ -33,16 +26,20 @@ public class ProductSize {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
-    public boolean isDelete() {
-        return isDelete;
+    public Integer getSizeId() {
+        return sizeId;
+    }
+
+    public void setSizeId(Integer sizeId) {
+        this.sizeId = sizeId;
     }
 
     public int getQuantity() {
@@ -51,9 +48,5 @@ public class ProductSize {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public void setDelete(boolean delete) {
-        isDelete = delete;
     }
 }

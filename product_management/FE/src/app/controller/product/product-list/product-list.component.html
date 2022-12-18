@@ -1,42 +1,71 @@
-<div class="row mt-5 mb-5 nav justify-content-center" *ngIf="action">
-  <div class="card " style="width: 18rem;" *ngFor="let item of (productList$ | async)">
-    <a routerLink="/product/detail/{{item.id}}">
-      <img src="{{item.image}}" class="card-img-top" alt="..." height="250">
-    </a>
-<!--    <a data-bs-toggle="modal" data-bs-target="#detailProduct"><img src="{{item.image}}" class="card-img-top" alt="..." height="250"></a>-->
-    <div class="card-body text-center pt-2">
-      <h5 class="card-title"><b>{{item.name | uppercase}}</b></h5>
-      <div class="card-text p-0">{{item.price | number}} VNĐ </div>
-      <a href="#" class="btn-card ">
-        <span class='bi bi-cart4'></span>
-        <span style="margin-left: 2%">Thêm vào giỏ hàng</span>
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../assets/images/slide/slide1.jpg" class="d-block w-100" alt="..." height="500">
+    </div>
+    <div class="carousel-item">
+      <img src="../assets/images/slide/slide2.jpg" class="d-block w-100" alt="..." height="500">
+    </div>
+    <div class="carousel-item">
+      <img src="../assets/images/slide/slide3.jpg" class="d-block w-100" alt="..." height="500">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<div class="row pt-4">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+    <img src="../assets/images/coollogo.gif" style="margin-left: 30%">
+  </div>
+  <div class="col-lg-4" >
+    <input type="search" [(ngModel)]="nameSearch" style="margin-left: 25%;margin-top: 6%">
+    <button (click)="paginate()" style="margin-left: 1%">Tìm kiếm</button>
+  </div>
+
+</div>
+<div class="row"><H1 CLASS="text-center">SẢN PHẨM BÁN CHẠY</H1></div>
+
+<div class="row  mb-5 nav justify-content-center" *ngIf="action">
+  <div class="row" style="margin-left: 12%">
+    <div class="card" style="width: 18rem;" *ngFor="let item of (productList$ | async)">
+      <a routerLink="/product/detail/{{item.id}}">
+        <img src="{{item.image}}" class="card-img-top" alt="..." height="250">
       </a>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div style="margin-left:85%">
-    <a class="btn-xem-them" *ngIf="pageSize <= (total$ | async)" (click)="nextPage()">
-      <span style="margin-left: 1%" class='bi bi-caret-right'> Xem thêm</span>
-    </a>
-  </div>
-</div>
 
-<!-- Modal -->
-<div class="modal fade" id="detailProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="text-align: center">Chi tiết sản phẩm</h5>
+      <div class="text-center pt-2 " style="height: 35%">
+        <h5><b>{{item.name | uppercase}}</b></h5>
+      </div>
+      <div class=" text-center">
+        <span>{{item.price | number}} VNĐ</span>
+      </div>
 
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      </div>
-      <div class="modal-footer">
-<!--        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-<!--        <button type="button" class="btn btn-primary">Save changes</button>-->
+      <div class=" text-center">
+        <a routerLink="/product/detail/{{item.id}}">
+          <span class='bi bi-cart4'></span>
+          <span style="margin-left: 2%">Thêm vào giỏ hàng</span>
+        </a>
       </div>
     </div>
   </div>
+  <div class="row">
+      <button  class="btn-xem-them " style="width: 9%;margin-left: 45.2%" *ngIf="pageSize <= (total$ | async)" (click)="nextPage()">
+        <span class='bi bi-caret-right'> Xem thêm</span>
+      </button>
+  </div>
 </div>
+

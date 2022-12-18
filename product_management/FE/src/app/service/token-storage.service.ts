@@ -26,7 +26,6 @@ export class TokenStorageService {
   public saveTokenLocal(token: string) {
     window.localStorage.removeItem(TOKEN_KEY);
     window.localStorage.setItem(TOKEN_KEY, token);
-    window.sessionStorage.setItem(TOKEN_KEY, token);
   }
 
   public saveTokenSession(token: string) {
@@ -36,9 +35,9 @@ export class TokenStorageService {
 
   public getToken(): string {
     if (localStorage.getItem(TOKEN_KEY) !== null) {
-      return <string> localStorage.getItem(TOKEN_KEY);
+      return localStorage.getItem(TOKEN_KEY) as string;
     } else {
-      return <string> sessionStorage.getItem(TOKEN_KEY);
+      return sessionStorage.getItem(TOKEN_KEY) as string;
     }
   }
 
@@ -61,7 +60,7 @@ export class TokenStorageService {
     if (localStorage.getItem(USER_KEY) !== null) {
       return JSON.parse(localStorage.getItem(USER_KEY));
     } else {
-      return JSON.parse(sessionStorage.getItem(USER_KEY));
+      return JSON.parse(sessionStorage.getItem(USER_KEY)) ;
     }
   }
 

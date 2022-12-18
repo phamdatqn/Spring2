@@ -19,9 +19,6 @@ public class Product {
     @JoinColumn(name = "product_type_id", referencedColumnName = "id")
     private ProductType productType;
 
-    @ManyToOne
-    @JoinColumn(name = "product_size_id", referencedColumnName = "id")
-    private ProductSize productSize;
 
     public Product() {
     }
@@ -90,11 +87,4 @@ public class Product {
         this.productType = productType;
     }
 
-    public ProductSize getProductSize() {
-        return productSize;
-    }
-
-    public void setProductSize(ProductSize productSize) {
-        this.productSize = productSize;
-    }
 }

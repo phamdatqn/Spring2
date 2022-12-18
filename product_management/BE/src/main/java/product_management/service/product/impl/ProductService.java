@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import product_management.dto.IProductDto;
 import product_management.model.Product;
 import product_management.repository.IProductRepository;
 import product_management.service.product.IProductService;
@@ -17,7 +18,7 @@ public class ProductService implements IProductService {
     private IProductRepository productRepository;
 
     @Override
-    public Page<Product> findAllProductByName(Pageable pageable, String nameSearch) {
+    public Page<IProductDto> findAllProductByName(Pageable pageable, String nameSearch) {
         return productRepository.findAllProductByName(pageable, nameSearch);
     }
 

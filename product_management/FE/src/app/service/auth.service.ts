@@ -5,12 +5,11 @@ import {Observable} from 'rxjs';
 import {IUser} from '../model/i-user';
 import {JwtResponseService} from './jwt-response-service';
 
-const AUTH_API = 'http://localhost:8080/api/public/';
+const AUTH_API = 'http://localhost:8080/api/security';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-
 @Injectable({
   providedIn: 'root'
 })
@@ -29,30 +28,20 @@ export class AuthService {
   }
 
   login(obj: { username: string; password: string; }): Observable<any> {
-    return this.http.post(AUTH_API + 'login', {
+    return this.http.post(AUTH_API + '/login', {
       username: obj.username,
       password: obj.password
     }, this.httpOptions);
   }
 
   forgotPassword(email): Observable<any> {
-    return this.http.get(AUTH_API + 'forgot-password?email=' + email, this.httpOptions);
+    return this.http.get(AUTH_API + '/forgot-password?email=' + email, this.httpOptions);
   }
-
   resetPassword(resetPassRequest): Observable<any> {
-    return this.http.post(AUTH_API + 'comfirm-reset-password', {
+    return this.http.post(AUTH_API + '/comfirm-reset-password', {
       password: resetPassRequest.password,
       confirmPassword: resetPassRequest.confirmPassword,
       token: resetPassRequest.token
     }, this.httpOptions);
   }
-
-  sendLogin(user: IUser): Observable<JwtResponseService> {
-    return this.http.post<JwtResponseService>(AUTH_API + '/login', user, httpOptions);
-  }
-
-  google(jwtResponse: JwtResponseService): Observable<JwtResponseService> {
-    return this.http.post<JwtResponseService>(AUTH_API + '/oauth/google', jwtResponse, httpOptions);
-  }
-
 }

@@ -3,28 +3,81 @@ import {ProductService} from '../../../service/product.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {Product} from '../../../model/product';
-
+import {IProductSizeDto} from '../../../dto/iproduct-size-dto';
+import {TokenStorageService} from '../../../service/token-storage.service';
+import Swal from 'sweetalert2';
+import {render} from 'creditcardpayments/creditCardPayments';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-
+  quantityChoose = 1;
+  productSizeIdChoose = 0;
+  productSizeList: IProductSizeDto[];
   product: Product;
+  id: number;
+  username;
+
   constructor(private productService: ProductService,
               private activatedRoute: ActivatedRoute,
+              private tokenService: TokenStorageService,
               private title: Title,
               private router: Router) {
   }
 
   ngOnInit(): void {
+    this.getProduct();
+    this.getALlProductSize();
+    this.getCustomer();
+  }
+
+  getProduct(): void {
     this.title.setTitle('Chi tiết sản phẩm');
-    const id = Number(this.activatedRoute.snapshot.params.id);
-    this.productService.findById(id).subscribe(value => {
-      console.log(value);
+    this.id = Number(this.activatedRoute.snapshot.params.id);
+    this.productService.findById(this.id).subscribe(value => {
       this.product = value;
-      // this.url = this.transform(this.movie.trailer);
     });
   }
+
+  getCustomer(): void {
+    this.username = this.tokenService.getUser().username;
+  }
+
+  chooseProductSize(id: number): void {
+    this.quantityChoose = 1;
+    this.productSizeIdChoose = id;
+  }
+
+  getALlProductSize(): void {
+    this.productService.findAllSizeByIdProduct(this.id).subscribe(sizeList => {
+      this.productSizeList = sizeList;
+    });
+  }
+
+  addCart(): void {
+    if (this.username == null) {
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Bạn chưa đăng nhập, vui lòng đăng nhập trước !',
+        showConfirmButton: false,
+        timer: 2000
+      });
+      this.router.navigateByUrl('/login');
+    } else {
+      this.productService.addToCart(this.username, this.productSizeIdChoose, this.quantityChoose).subscribe(value => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Thêm giỏ hàng thành công !',
+          showConfirmButton: false,
+          timer: 1000
+        });
+      });
+      window.location.replace('product');
+    }
+    }
+
 }

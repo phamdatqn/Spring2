@@ -1,19 +1,19 @@
-
-<div class="limiter" style="background-image: url('https://img.freepik.com/free-photo/female-friends-out-shopping-together_53876-25041.jpg?w=1060&t=st=1669824810~exp=1669825410~hmac=57ee1ef09f61178b9bd0ce319807df3ed72f7464bf29907ba59f2f5d06e9348b'); background-size: cover">
+<div class="limiter"
+     style="background-image: url('https://img.freepik.com/free-photo/female-friends-out-shopping-together_53876-25041.jpg?w=1060&t=st=1669824810~exp=1669825410~hmac=57ee1ef09f61178b9bd0ce319807df3ed72f7464bf29907ba59f2f5d06e9348b'); background-size: cover">
   <div class="container-login100" style="color: black">
     <div class="wrap-login100 p-l-20 p-r-20 p-t-5 p-b-30">
       <div class="row">
         <div class="col-lg-5 ">
           <a routerLink="/home">
-          <img class="img-fluid" src="../assets/images/LOGO.png" style="margin-left: -16%" >
-        </a>
+            <img class="img-fluid" src="../assets/images/LOGO.png" style="margin-left: -16%">
+          </a>
         </div>
-        <div class="col-lg-7 p-t-50" >   <span style="font-size: 45px;margin-left: -20%">
+        <div class="col-lg-7 p-t-50">   <span style="font-size: 45px;margin-left: -20%">
 						ĐĂNG NHẬP
 					</span>
         </div>
       </div>
-      <form class="login100-form validate-form"  [formGroup] = "formGroup" (ngSubmit)="onSubmit()" >
+      <form class="login100-form validate-form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
 
         <div class="wrap-input100 validate-input m-b-23" data-validate="Username is required">
           <label class="label-input100">Tên đăng nhập:
@@ -21,7 +21,7 @@
                   *ngIf="formGroup.controls.username.hasError('required')
                   && formGroup.controls.username.dirty">
             Vui lòng nhập tài khoản !</span></label>
-          <input class="input100" type="text" formControlName="username" >
+          <input class="input100" type="text" formControlName="username">
           <span class="focus-input100" data-symbol="&#xf206;"></span>
         </div>
 
@@ -37,47 +37,50 @@
         </div>
 
 
-        <div class="p-b-10 p-t-10" style="font-size: 18px">
-          <label >
-            <input style="background: #1da1f2" type="checkbox" checked="checked" name="remember"> Lưu mật khẩu
-          </label>
-          <a href="#">
-            <span class="the-a" style="margin-left: 30%;font-size: 18px">Quên mật khẩu?</span>
-          </a>
+        <!--        <div class="p-b-10 p-t-10" style="font-size: 18px">-->
+        <!--          <label >-->
+        <!--            <input style="background: #1da1f2" type="checkbox" checked="checked" name="remember"> Lưu mật khẩu-->
+        <!--          </label>-->
+        <!--          <a href="#">-->
+        <!--            <span class="the-a" style="margin-left: 30%;font-size: 18px">Quên mật khẩu?</span>-->
+        <!--          </a>-->
+        <!--        </div>-->
+
+        <!--        <div class="p-b-30" style=";font-size: 18px">-->
+        <!--          <span  style="font-size: 18px">Bạn chưa có tài khoản?</span>-->
+        <!--          <a href="#">-->
+
+        <!--            <span class="the-a" style="font-size: 18px;margin-left: 2%">Đăng ký?</span>-->
+        <!--          </a>-->
+        <!--        </div>-->
+        <div style="margin-top: 3%">
+          <button class="btnLogin"
+                  style="text-transform:none;border-radius: 30px">
+            <span style="font-size: 20px">Đăng nhập </span>
+          </button>
         </div>
-
-        <div class="p-b-30" style=";font-size: 18px">
-          <span  style="font-size: 18px">Bạn chưa có tài khoản?</span>
-          <a href="#">
-
-            <span class="the-a" style="font-size: 18px;margin-left: 2%">Đăng ký?</span>
-          </a>
-        </div>
-
-        <button class="gmail-btn"
-                style="text-transform:none;border-radius: 30px" >
-          <span style="font-size: 20px;font-family: Times New Roman">Đăng nhập </span>
-        </button>
       </form>
-        <div class="txt1 text-center p-t-10 p-b-10">
-						<span >
+
+      <div class="txt1 text-center p-t-10 p-b-10">
+						<span>
 							Hoặc
 						</span>
-        </div>
+      </div>
 
-        <a (click)="signInWithGoogle()">
-          <button class="gmail-btn"
-                  style="text-transform:none;border-radius: 30px; margin-bottom: 5%" type="button">
-            <img  width="20px" alt="Google sign-in"
-                  src="https://cdn-icons-png.flaticon.com/512/2504/2504739.png"/>
-            <span style="font-size: 20px;margin-left: 2%"  >Đăng nhập Gmail</span>
-          </button>
-        </a>
-        <button class="thoat-btn" (click)="whenExit()"
-                style="text-transform:none;border-radius: 30px" >
-          <span style="font-size: 20px">Thoát</span>
+      <a (click)="signInWithGoogle()">
+        <button class="btnLogin"
+                style="text-transform:none;border-radius: 30px; margin-bottom: 5%" type="button">
+          <img width="20px" alt="Google sign-in"
+               src="https://cdn-icons-png.flaticon.com/512/2504/2504739.png"/>
+          <span style="font-size: 20px;margin-left: 2%">Đăng nhập Gmail</span>
         </button>
+      </a>
+      <button class="btnThoat" (click)="whenExit()"
+              style="text-transform:none;border-radius: 30px">
+        <span style="font-size: 20px">Thoát</span>
+      </button>
 
     </div>
   </div>
 </div>
+

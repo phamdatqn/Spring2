@@ -5,11 +5,11 @@ import Swal from 'sweetalert2';
 import {TokenStorageService} from '../../../service/token-storage.service';
 import {AuthService} from '../../../service/auth.service';
 
-import {AuthenticationService} from '../../../service/authentication.service';
 import {Title} from '@angular/platform-browser';
 import {GoogleLoginProvider, SocialAuthService, SocialUser} from 'angularx-social-login';
 import {ShareService} from '../../../service/share.service';
 import {JwtResponseService} from '../../../service/jwt-response-service';
+import {AuthenticationService} from '../../../service/authentication.service';
 
 
 @Component({
@@ -75,11 +75,10 @@ export class LoginComponent implements OnInit {
         this.username = this.tokenStorageService.getUser().username;
         this.roles = this.tokenStorageService.getUser().roles;
         this.formGroup.reset();
-
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: this.username + ' Đăng nhập thành công !',
+          title:  'Đăng nhập thành công !',
           showConfirmButton: false,
           timer: 2000
         });
@@ -103,15 +102,20 @@ export class LoginComponent implements OnInit {
     this.authSocialService.signIn(GoogleLoginProvider.PROVIDER_ID).then(data => {
       this.socialUser = data;
       const tokenGoogle = new JwtResponseService(this.socialUser.idToken);
-      console.log(tokenGoogle);
       this.auth.google(tokenGoogle).subscribe(req => {
           if (req.token === '') {
             this.tokenStorageService.saveUser(req.user);
+            console.log('if');
+            console.log(req.user);
           } else {
             this.tokenStorageService.saveTokenLocal(req.accessToken);
+            console.log('el');
+            console.log(req.accessToken);
             this.tokenStorageService.saveUserLocal(req.user);
             this.tokenStorageService.saveUserLocal(this.socialUser.email);
             this.username = this.socialUser.email;
+            console.log('socia');
+            console.log( this.username );
             window.location.replace('');
           }
         },

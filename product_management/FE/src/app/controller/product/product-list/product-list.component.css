@@ -11,9 +11,10 @@
   transform: translateY(-30px);
 }
 .btn-xem-them{
-  color: blue;
-  border: none;
+  color: green;
+  border: 1px solid green;
   background: white;
+
 }
 .btn-xem-them:hover{
   color: #DF1442;

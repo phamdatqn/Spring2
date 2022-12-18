@@ -8,6 +8,31 @@ a{
 .the-a:hover{
   color: #3b5998;
 }
+
+.btnLogin {
+  background-color: white;
+  color: black;
+  border: 2px solid blue;
+  width: 80%;
+  height: 30%;
+  margin-left: 10%;
+}
+.btnLogin:hover{
+  background: blue;
+  color: white;
+}
+.btnThoat {
+  background-color: white;
+  color: black;
+  border: 2px solid #DC143C;
+  width: 80%;
+  height: 30%;
+  margin-left: 10%;
+}
+.btnThoat:hover{
+  background: #DC143C;
+  color: white;
+}
 * {
   margin: 0px;
   padding: 0px;
@@ -26,7 +51,6 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p {
-  font-family: Poppins-Regular;
   font-size: 14px;
   line-height: 1.7;
   color: #666666;
@@ -122,7 +146,7 @@ iframe {
 
 .wrap-login100 {
   width: 500px;
-  background: #ede4e4;
+  background: #E6EEFC;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -137,7 +161,6 @@ iframe {
 
 .login100-form-title {
   display: block;
-  font-family:  Times New Roman;
   font-size: 45px;
   color: #333333;
   line-height: 1.2;
@@ -156,7 +179,6 @@ iframe {
 }
 
 .label-input100 {
-  font-family:  Times New Roman;
   font-size: 18px;
   color: #333333;
   line-height: 1.5;
@@ -164,7 +186,6 @@ iframe {
 }
 
 .input100 {
-  font-family:  Times New Roman;
   font-size: 18px;
   color: #333333;
   line-height: 1.2;
@@ -291,7 +312,6 @@ iframe {
 }
 
 .login100-form-btn {
-  font-family:  Times New Roman;
   font-size: 20px;
   color: #fff;
   line-height: 1.2;
@@ -309,7 +329,7 @@ iframe {
   height: 50px;
 }
 .gmail-btn {
-  font-family:  Times New Roman;
+  margin-left: 20%;
   font-size: 20px;
   background: #2041FF;
   color: white;
@@ -323,14 +343,14 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 0 20px;
-  width: 100%;
+  width: 60%;
   height: 50px;
 }
 .gmail-btn:hover{
   background: #2D7AF7;
 
 }.thoat-btn {
-   font-family:  Times New Roman;
+  margin-left: 20%;
    font-size: 20px;
    background: red;
    color: white;
@@ -344,7 +364,7 @@ iframe {
    justify-content: center;
    align-items: center;
    padding: 0 20px;
-   width: 100%;
+   width: 60%;
    height: 50px;
  }
 .thoat-btn:hover{
@@ -3463,12 +3483,3 @@ label:hover{
   right: 0px;
   bottom: 0px;
 }
-
-
-
-
-
-
-
-
-

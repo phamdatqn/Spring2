@@ -1,0 +1,107 @@
+#imgtext {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 20px;
+}
+/*giỏ hàng của bạn*/
+.cart-product-body{
+  padding-top: 20px;
+  margin: auto;
+}
+.cart-product-body .cart-product-pay{
+  color: black;
+}
+.cart-product-body .cart-product-pay table{
+  border: 3px  #a50318;
+}
+.bill-pay-body{
+  margin: auto;
+  padding-bottom: 20px;
+  color: black;
+}
+.bill-pay-body .total-pay{
+  margin-left: 47%;
+}
+.bill-pay-body .form-control{
+  height: 70px;
+  width: 300px;
+  border-radius: 10px;
+}
+.card-body ul li{
+  list-style-type: none;
+}
+.buttons_added {
+  opacity: 1;
+  display: inline-block;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  white-space: nowrap;
+  vertical-align: top;
+  border-radius: 10px;
+}
+
+.is-form {
+  overflow: hidden;
+  position: relative;
+  background-color: #f9f9f9;
+  height: 2.2rem;
+  width: 1.9rem;
+  padding: 0;
+  text-shadow: 1px 1px 1px #fff;
+  border: 1px solid #ddd;
+}
+
+.is-form:focus, .input-text:focus {
+  outline: none;
+}
+
+.is-form.minus {
+  border-radius: 4px 0 0 4px;
+}
+
+.is-form.plus {
+  border-radius: 0 4px 4px 0;
+}
+.asc-quantity{
+  margin-left: 3%;
+}
+.input-qty {
+  margin-left: 3%;
+  background-color: #fff;
+  width: 40%;
+  text-align: right;
+  border: 1px solid #ddd;
+}
+
+
+/*anh sp chi tiet*/
+
+/*The grid: Four equal columns that floats next to each other*/
+.column-product {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+
+/* Style the images inside the grid */
+.column-product img {
+  opacity: 0.8;
+  cursor: pointer;
+  height: 80px;
+  width: 100px;
+  /*di chuyen ảnh*/
+  margin-left: 40%;
+}
+
+.column-product img:hover {
+  opacity: 1;
+}
+
+/* Clear floats after the columns */
+.row-product:after {
+  content: "";
+  display: table;
+  clear: both;
+}

@@ -6,7 +6,7 @@ import {SecurityModule} from './controller/security/security.module';
 
 const routes: Routes = [
   {
-    path: 'home', loadChildren: () => ProductModule,
+    path: 'product', loadChildren: () => ProductModule,
   },
   {
     path: 'login', loadChildren: () => SecurityModule,

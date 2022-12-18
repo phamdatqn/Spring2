@@ -10,14 +10,11 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthenticationService {
-  loginUrl = 'http://localhost:8080/api/public';
+  loginUrl = 'http://localhost:8080/api/security';
   constructor(private http: HttpClient) { }
 
-  sendLogin(user: IUser): Observable<JwtResponseService> {
-    return this.http.post<JwtResponseService>(this.loginUrl, user, httpOptions);
-  }
-
   google(jwtResponse: JwtResponseService): Observable<any> {
+    console.log('ggg');
     console.log(jwtResponse);
     return this.http.post<JwtResponseService>(this.loginUrl + '/oauth/google', jwtResponse, httpOptions);
   }

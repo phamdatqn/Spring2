@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {SearchResult} from '../model/search-result';
-import {Product} from '../model/product';
 import {IProductDto} from '../dto/i-product-dto';
 import {TokenStorageService} from './token-storage.service';
+import {IProductSizeDto} from '../dto/iproduct-size-dto';
+import {ICartDto} from '../dto/i-cart-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -12,28 +13,54 @@ import {TokenStorageService} from './token-storage.service';
 export class ProductService {
   username: string;
   roles: string[] = [];
-  private PRODUCT_LIST_URL = 'http://localhost:8080/api/public/';
-  constructor(private httpClient: HttpClient,
-              private tokenStorageService: TokenStorageService) { }
-  paginate(page: number, limit: number, nameSearch: string): Observable<SearchResult<Product>> {
+  private URL = 'http://localhost:8080/api/public';
 
-    const URL = this.PRODUCT_LIST_URL + 'list?page=' + (page - 1) + '&size=' + limit +  '&nameSearch=' + nameSearch;
-    console.log(URL);
-    return this.httpClient.get<SearchResult<Product>>(URL);
+  constructor(private httpClient: HttpClient,
+              private tokenStorageService: TokenStorageService) {
   }
 
   delete(productIdDelete: number) {
-    return this.httpClient.delete<void>(this.PRODUCT_LIST_URL  + productIdDelete);
+    return this.httpClient.delete<void>(this.URL + productIdDelete);
   }
 
-  findAllListProduct(nameSearch: string, size: number): Observable<SearchResult<IProductDto>> {
-    const URL = this.PRODUCT_LIST_URL + 'list?size=' + size + '&nameSearch=' + nameSearch  ;
-    console.log(URL);
+  findAllListProduct(size: number, nameSearch: string): Observable<SearchResult<IProductDto>> {
+    const URL = this.URL + '/list?size=' + size + '&nameSearch=' + nameSearch;
     return this.httpClient.get<SearchResult<IProductDto>>(URL);
   }
 
   findById(id: number): Observable<IProductDto> {
-    console.log(id);
-    return this.httpClient.get<IProductDto>(this.PRODUCT_LIST_URL + 'detail/' + id);
+    return this.httpClient.get<IProductDto>(this.URL + '/detail/' + id);
+  }
+
+  findAllSizeByIdProduct(id: number): Observable<IProductSizeDto[]> {
+    return this.httpClient.get<IProductSizeDto[]>(this.URL + '/product-size/' + id);
+  }
+
+  addToCart(username: string, productSizeId: number, quantity: number): Observable<void> {
+    return this.httpClient.get<void>(this.URL + '/add-cart/' + username + '&' + productSizeId + '&' + quantity);
+  }
+
+  findAllCartListByUsername(username: string): Observable<ICartDto[]> {
+    return this.httpClient.get<ICartDto[]>(this.URL + '/cart-list/' + username);
+  }
+
+  totalBill(username: string): Observable<number> {
+    return this.httpClient.get<number>(this.URL + '/total-bill/' + username);
+  }
+
+  descQuantity(id: number): Observable<void> {
+    return this.httpClient.get<void>(this.URL + '/desc-quantity/' + id);
+  }
+
+  ascQuantity(id: number): Observable<void> {
+    return this.httpClient.get<void>(this.URL + '/asc-quantity/' + id);
+  }
+
+  sumQuantityCart(username: string): Observable<number> {
+    return this.httpClient.get<number>(this.URL + '/sum-quantity-cart/' + username);
+  }
+
+  deleteProduct(id: number): Observable<void> {
+    return this.httpClient.delete<void>(this.URL + '/delete/' + id);
   }
 }
