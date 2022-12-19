@@ -78,11 +78,10 @@ export class LoginComponent implements OnInit {
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title:  'Đăng nhập thành công !',
+          title: 'Đăng nhập thành công !',
           showConfirmButton: false,
-          timer: 2000
-        });
-        window.location.replace('');
+          timer: 1500
+        }).then(r =>    window.location.replace('product')) ;
       },
       err => {
         this.authService.isLoggedIn = false;

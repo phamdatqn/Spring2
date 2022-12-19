@@ -18,3 +18,10 @@
 .size:first-of-type {
   margin-left: 40px;
 }
+.btn-addCart{
+  border: solid 2px yellowgreen;
+}
+.btn-addCart:hover {
+  border: solid 2px green;
+
+}

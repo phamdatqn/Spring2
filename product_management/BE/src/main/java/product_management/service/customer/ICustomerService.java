@@ -1,5 +1,7 @@
 package product_management.service.customer;
 
+import org.springframework.data.repository.query.Param;
+import product_management.dto.IViewInfo;
 import product_management.model.Customer;
 
 import java.util.List;
@@ -19,5 +21,5 @@ public interface ICustomerService {
 
     Customer findByUsername(String username);
 
-
+    Customer viewInfo(String username);
 }

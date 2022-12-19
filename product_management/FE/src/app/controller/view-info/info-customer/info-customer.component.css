@@ -1,0 +1,24 @@
+.chuLonTieuDe{
+  text-transform: uppercase;
+  text-align: center;
+}
+.card {
+  list-style: none;
+  position: relative;
+  margin: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: .5s ease;
+}
+.title{
+  color: darkblue;
+}
+.title:hover {
+  color: red;
+}
+
+.infoContent{
+  color: darkblue;
+}
+.infoContent:hover {
+  color: red;
+}

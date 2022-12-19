@@ -2,6 +2,7 @@ package product_management.service.customer.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import product_management.dto.IViewInfo;
 import product_management.model.Customer;
 import product_management.repository.ICustomerRepository;
 import product_management.service.customer.ICustomerService;
@@ -41,5 +42,10 @@ public class CustomerService implements ICustomerService {
     @Override
     public Customer findByUsername(String username) {
         return customerRepository.findByUsername(username);
+    }
+
+    @Override
+    public Customer viewInfo(String username) {
+        return customerRepository.viewInfo(username);
     }
 }

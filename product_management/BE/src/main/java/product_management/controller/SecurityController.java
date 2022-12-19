@@ -34,7 +34,7 @@ import java.util.stream.Collectors;
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/api/security")
-public class Security {
+public class SecurityController {
     @Autowired
     private AuthenticationManager authenticationManager;
 

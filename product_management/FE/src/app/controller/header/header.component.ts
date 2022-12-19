@@ -29,8 +29,6 @@ export class HeaderComponent implements OnInit {
 
   showUsername() {
     this.username = this.tokenService.getUser().username;
-    // console.log('und');
-    // console.log(this.tokenService.getUser());
     this.roles = this.tokenService.getUser().roles;
     this.isCustomer = this.roles.indexOf('ROLE_CUSTOMER') !== -1;
     this.isEmployee = this.roles.indexOf('ROLE_EMPLOYEE') !== -1;
@@ -51,13 +49,15 @@ export class HeaderComponent implements OnInit {
       title: ' Đăng xuất thành công !',
       showConfirmButton: false,
       timer: 1000
+    }).then(r => {
+      this.tokenService.logOut();
+      this.username = '';
+      this.isCustomer = false;
+      this.isEmployee = false;
+      this.isAdmin = false;
+      window.location.replace('product');
     });
-    this.tokenService.logOut();
-    this.router.navigateByUrl('');
-    this.username = '';
-    this.isCustomer = false;
-    this.isEmployee = false;
-    this.isAdmin = false;
+
   }
 
   reload() {

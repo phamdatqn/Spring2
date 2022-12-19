@@ -48,7 +48,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable().
                 authorizeRequests()
                 .antMatchers("/api/public/**",
-                        "/api/security/**"
+                        "/api/security/**",
+                        "/api/info/**"
                 )
                 .permitAll()
 

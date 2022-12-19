@@ -1,0 +1,78 @@
+<main role="main">
+  <h3 class="chuLonTieuDe" style="margin-top: 20px">
+    <strong>THÔNG TIN CHI TIẾT: <span style="color: #a50318">{{username}}</span></strong>
+  </h3>
+  <div class="container mt-4">
+    <div class="card">
+      <div class="container-fliud row">
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-8" style="font-size: 25px">
+          <div class="row">
+            <div class="col-lg-4">
+              <span class="title">Họ và tên:    </span>
+            </div>
+            <div class="col-lg-8">
+              <span class="infoContent">{{viewInfo.name}}</span>
+            </div>
+          </div>
+          <div class="row"><hr></div>
+
+          <div class="row">
+            <div class="col-lg-4">
+              <span class="title">Giới tính:    </span>
+            </div>
+            <div class="col-lg-8">
+              <span class="infoContent" *ngIf="viewInfo.gender==1">Nam</span>
+              <span class="infoContent" *ngIf="viewInfo.gender!=1">Nữ</span>
+            </div>
+          </div>
+          <div class="row"><hr></div>
+
+          <div class="row">
+            <div class="col-lg-4">
+              <span class="title">Ngày sinh:    </span>
+            </div>
+            <div class="col-lg-8">
+              <span class="infoContent">{{viewInfo.dayOfBirth}}</span>
+            </div>
+          </div>
+          <div class="row"><hr></div>
+
+          <div class="row">
+            <div class="col-lg-4">
+              <span class="title">Email:    </span>
+            </div>
+            <div class="col-lg-8">
+              <span class="infoContent">{{viewInfo.email}}</span>
+            </div>
+          </div>
+          <div class="row"><hr></div>
+
+          <div class="row">
+            <div class="col-lg-4">
+              <span class="title">Địa chỉ:    </span>
+            </div>
+            <div class="col-lg-8">
+              <span class="infoContent">{{viewInfo.address}}</span>
+            </div>
+          </div>
+          <div class="row"><hr></div>
+
+          <div class="row">
+            <div class="col-lg-4">
+              <span class="title">Số điện thoại:    </span>
+            </div>
+            <div class="col-lg-8">
+              <span class="infoContent">{{viewInfo.phoneNumber}}</span>
+            </div>
+          </div>
+          <div class="row"><hr></div>
+
+          <div class="col-lg-2">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

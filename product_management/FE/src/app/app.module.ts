@@ -7,9 +7,10 @@ import {HttpClientModule} from '@angular/common/http';
 import {ProductModule} from './controller/product/product.module';
 import {AppRoutingModule} from './app-routing.module';
 import {SecurityModule} from './controller/security/security.module';
-import { HeaderComponent } from './controller/header/header.component';
-import { FooterComponent } from './controller/footer/footer.component';
+import {HeaderComponent} from './controller/header/header.component';
+import {FooterComponent} from './controller/footer/footer.component';
 import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login';
+import {InfoCustomerModule} from './controller/view-info/info-customer.module';
 
 const googleLoginOptions = {
   scope: 'profile email',
@@ -29,7 +30,8 @@ const googleLoginOptions = {
     ProductModule,
     AppRoutingModule,
     SecurityModule,
-    SocialLoginModule
+    SocialLoginModule,
+    InfoCustomerModule
   ],
   providers: [
     {

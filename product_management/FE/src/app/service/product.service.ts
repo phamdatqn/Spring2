@@ -19,10 +19,6 @@ export class ProductService {
               private tokenStorageService: TokenStorageService) {
   }
 
-  delete(productIdDelete: number) {
-    return this.httpClient.delete<void>(this.URL + productIdDelete);
-  }
-
   findAllListProduct(size: number, nameSearch: string): Observable<SearchResult<IProductDto>> {
     const URL = this.URL + '/list?size=' + size + '&nameSearch=' + nameSearch;
     return this.httpClient.get<SearchResult<IProductDto>>(URL);
@@ -45,7 +41,8 @@ export class ProductService {
   }
 
   history(username: string): Observable<ICartDto[]> {
-    return this.httpClient.get<ICartDto[]>(this.URL + '/history/' + username);
+    const URL = this.URL + '/history/' + username;
+    return this.httpClient.get<ICartDto[]>(URL);
   }
 
   totalBill(username: string): Observable<number> {

@@ -2,7 +2,8 @@
   <div class="cart-product-pay">
     <h2 style="text-align: center;margin-top: 1.6%">LỊCH SỬ MUA HÀNG: <span style="color: #DC143C">{{username}}</span></h2>
     <hr style="color: #a50318">
-    <table class="table text-center">
+    <h4 *ngIf="!cartHistory" style="color: #a50318;text-align: center">Bạn không có lịch sử mua hàng !</h4>
+    <table class="table text-center" *ngIf="cartHistory">
       <thead class="text-center">
       <tr>
         <th></th>

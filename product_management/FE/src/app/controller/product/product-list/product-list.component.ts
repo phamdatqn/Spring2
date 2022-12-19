@@ -48,20 +48,20 @@ export class ProductListComponent implements OnInit {
     this.paginate();
   }
 
-  getInfoSavingDelete(id: number, name: string): void {
-    this.productIdDelete = id;
-    this.productNameDelete = name;
-  }
-
-  deleteProduct() {
-    this.productService.delete(this.productIdDelete).subscribe();
-    // @ts-ignore
-    Swal.fire({
-      position: 'top-mid',
-      icon: 'success',
-      title: 'Đã xóa thành công !',
-      showConfirmButton: false,
-      timer: 1500
-    });
-  }
+  // getInfoSavingDelete(id: number, name: string): void {
+  //   this.productIdDelete = id;
+  //   this.productNameDelete = name;
+  // }
+  //
+  // deleteProduct() {
+  //   this.productService.delete(this.productIdDelete).subscribe();
+  //   // @ts-ignore
+  //   Swal.fire({
+  //     position: 'top-mid',
+  //     icon: 'success',
+  //     title: 'Đã xóa thành công !',
+  //     showConfirmButton: false,
+  //     timer: 1500
+  //   });
+  // }
 }

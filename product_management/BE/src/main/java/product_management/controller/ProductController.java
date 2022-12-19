@@ -34,7 +34,8 @@ public class ProductController {
     private IOderDetailService oderDetailService;
 
     @GetMapping("list")
-    public ResponseEntity<Page<IProductDto>> showListNameSearch(@PageableDefault(value = 4) Pageable pageable, @RequestParam(value = "nameSearch", defaultValue = "") String nameSearch) {
+    public ResponseEntity<Page<IProductDto>> showListNameSearch(@PageableDefault(value = 4) Pageable pageable,
+                                                                @RequestParam(value = "nameSearch", defaultValue = "") String nameSearch) {
         Page<IProductDto> productDtoPage = productService.findAllProductByName(pageable, nameSearch);
         if (productDtoPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
