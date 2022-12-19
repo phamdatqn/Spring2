@@ -21,21 +21,14 @@ export class ProductCartComponent implements OnInit {
   imageDelete: string;
   nameDelete: string;
   sizeDelete: string;
+
+  totalBillPayment: string;
+
   constructor(private productService: ProductService,
               private tokenService: TokenStorageService,
               private router: Router,
               private title: Title) {
-    this.title.setTitle('');
-    render(
-      {
-        id: '#myPaypal',
-        value: '55',
-        currency: 'USD',
-        onApprove: (details) => {
-          alert('thành công');
-        }
-      }
-    );
+    this.title.setTitle('Giỏ Hàng');
   }
 
   ngOnInit(): void {
@@ -70,12 +63,9 @@ export class ProductCartComponent implements OnInit {
   }
 
   getTotalBill(): void {
-    this.productService.totalBill(this.username).subscribe( value => {
+    this.productService.totalBill(this.username).subscribe(value => {
       this.totalBill = value;
     });
-  }
-
-  removeCart(id: number) {
   }
 
   getInfoDelete(id: number, name: string, image: string, size: string) {
@@ -90,11 +80,40 @@ export class ProductCartComponent implements OnInit {
       Swal.fire({
         position: 'center',
         icon: 'success',
-        title:  'Xóa thành công !',
+        title: 'Xóa thành công !',
         showConfirmButton: false,
         timer: 1000
-      });
-      window.location.reload();
+      }).then(r =>    window.location.reload());
     });
+  }
+
+  payment(): void {
+    this.productService.payment(this.username).subscribe(value => {
+      console.log('oay');
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Thanh toán thành công !',
+        showConfirmButton: false,
+        timer: 1000
+      }).then(r => window.location.replace('product'));
+    });
+  }
+  sendInfoPayMent(totalBill: number) {
+    this.totalBillPayment = (totalBill / 23000).toFixed(2).toString();
+    render(
+      {
+        id: '#myPaypal',
+        value: this.totalBillPayment,
+        currency: 'USD',
+        onApprove: (details) => {
+          this.payment();
+        }
+      }
+    );
+  }
+
+  reload() {
+    window.location.reload();
   }
 }

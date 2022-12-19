@@ -74,9 +74,8 @@ export class ProductDetailComponent implements OnInit {
           title: 'Thêm giỏ hàng thành công !',
           showConfirmButton: false,
           timer: 1000
-        });
+        }).then(r =>       window.location.replace('product'));
       });
-      window.location.replace('product');
     }
     }
 

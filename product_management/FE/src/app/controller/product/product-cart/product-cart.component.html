@@ -11,22 +11,32 @@
         <th>Đơn giá</th>
         <th>Số lượng</th>
         <th>Tổng giá</th>
+        <th>Xóa khỏi giỏ hàng</th>
       </tr>
       </thead>
       <tbody *ngFor="let item of oderDetailList; index as i">
       <tr>
         <td>
           <img src="{{item.image}}" id="expandedImg"
-               style="width:70%;margin-left:20%;height: 80px;width: 100px"></td>
-        <td class="text-left">
-          <h4>{{item.name}}</h4>
-          <a data-bs-toggle="modal" data-bs-target="#delProduct" href="#" style="color: #a50318"
-             (click)="getInfoDelete(item.id,item.name, item.image, item.size)">Xóa</a>
+               style="width:70%;margin-left:20%;height: 80px;width: 100px">
         </td>
-        <td>{{item.size}}</td>
-        <td>{{item.price | number}} VNĐ₫</td>
+        <td class="text-left content-info">
+          <div style="margin-top: 5%">
+          <h4 style="color: #2041FF">{{item.name}}</h4>
+          </div>
+
+        </td>
         <td>
-          <div class="buttons_added">
+          <div style="margin-top: 47%">
+          <span  class="content-info">{{item.size}}</span>
+          </div>
+        </td>
+        <td>
+          <div style="margin-top: 15%">{{item.price | number}} VNĐ
+          </div>
+        </td>
+        <td>
+          <div class="buttons_added" style="margin-top: 15%">
             <input type="button" value="-" (click)="descQuantity(item.id)" [disabled]="item.quantity==1">
             <input readonly aria-label="quantity" class="input-qty" max="999" min="1" name="" type="number"
                    value="{{item.quantity}}">
@@ -34,26 +44,36 @@
 
           </div>
         </td>
-        <td>{{item.total | number}} ₫</td>
+        <td>
+          <div style="margin-top: 17%">{{item.total | number}} ₫</div></td>
+        <td>
+          <div style="margin-top: 10%">
+          <button class="btn btn-xoa" data-bs-toggle="modal" data-bs-target="#delProduct"
+                  (click)="getInfoDelete(item.id,item.name, item.image, item.size)">Xóa
+          </button>
+          </div>
+        </td>
       </tr>
       </tbody>
     </table>
   </div>
 </div>
 <div class="row bill-pay-body">
-  <div class="col-lg-6">
+  <div class="col-lg-4"></div>
+
+  <div class="col-lg-4">
   </div>
-  <div class="col-lg-6">
-    <div class="total-pay">
+  <div class="col-lg-4">
+    <div>
       <h5><b>Tổng tiền:</b><span style="color: #DC143C">{{totalBill | number}} ₫</span></h5>
     </div>
-    <div  id="myPaypal">
-      <button class="btn btn-danger total-pay">Thanh toán</button>
-    </div>
+    <button class="btn btn-danger total-pay" data-bs-toggle="modal" data-bs-target="#payment"
+            (click)="sendInfoPayMent(totalBill)">Thanh toán
+    </button>
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal Delete -->
 <div class="modal fade" id="delProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -63,7 +83,7 @@
           <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="text-center">
-          <b><span style="color: #a50318;font-size: 30px">VUI LÒNG XÁC NHẬN: </span></b>
+          <b><span style="color: #a50318;font-size: 30px">XÓA KHỎI GIỎ HÀNG </span></b>
         </div>
       </div>
       <div class="modal-body">
@@ -87,4 +107,41 @@
     </div>
   </div>
 </div>
+
+<!-- Modal Payment-->
+<div class="modal fade" id="payment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header row">
+        <div>
+          <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"
+                  (click)="reload()"></button>
+        </div>
+        <div class="text-center">
+          <b><span style="color: #a50318;font-size: 30px">XÁC NHẬN THANH TOÁN </span></b>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <span class="text-center" style="color: #a50318;font-size: 20px"><b>{{nameDelete}}</b></span>
+        </div>
+        <div class="row">
+          <h5 class="text-center"><b>TỔNG TIỀN PHẢI TRẢ: <span
+            style="color: #a50318">{{totalBillPayment | currency}}</span></b></h5>
+        </div>
+        <div>
+          <hr>
+        </div>
+        <div id="myPaypal"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reload()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 

@@ -1,3 +1,22 @@
+.search{
+  width: 80%;
+  height: 40%;
+  border-radius: 10px;
+  border: solid #2D7AF7;
+}
+.search:hover{
+  border: solid 2px #DF1442;
+}
+
+
+.btn-timKiem{
+  height: 40%;
+  border: solid 2px #2D7AF7;
+  background: white;
+}
+.btn-timKiem:hover{
+  border: solid 2px #DF1442;
+}
 .card {
   list-style: none;
   position: relative;

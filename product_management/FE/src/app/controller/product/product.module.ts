@@ -8,6 +8,7 @@ import {ProductEditComponent} from './product-edit/product-edit.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ProductCartComponent } from './product-cart/product-cart.component';
+import { ProductHistoryComponent } from './product-history/product-history.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ProductCartComponent } from './product-cart/product-cart.component';
     ProductCreateComponent,
     ProductEditComponent,
     ProductDetailComponent,
-    ProductCartComponent
+    ProductCartComponent,
+    ProductHistoryComponent
   ],
   imports: [
     CommonModule,

@@ -12,4 +12,5 @@ public interface ICartDto {
     String getImage();
     Integer getTotal();
     Integer getTotalBill();
+    String getDayPayment();
 }

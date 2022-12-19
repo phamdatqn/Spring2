@@ -39,6 +39,11 @@ public class OderDetailService implements IOderDetailService {
     }
 
     @Override
+    public List<ICartDto> findAllHistory(String username) {
+        return oderDetailRepository.findAllHistory(username);
+    }
+
+    @Override
     public void descQuantity(Integer id) {
         oderDetailRepository.descQuantity(id);
     }
@@ -62,5 +67,11 @@ public class OderDetailService implements IOderDetailService {
     @Override
     public void deleteProduct(Integer id) {
         oderDetailRepository.deleteProduct(id);
+    }
+
+    @Override
+    public void payment(String username) {
+        Customer customer = customerRepository.findByUsername(username);
+        oderDetailRepository.payment(customer.getId());
     }
 }

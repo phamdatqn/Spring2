@@ -32,11 +32,13 @@
   <div class="col-lg-4">
     <img src="../assets/images/coollogo.gif" style="margin-left: 30%">
   </div>
-  <div class="col-lg-4" >
-    <input type="search" [(ngModel)]="nameSearch" style="margin-left: 25%;margin-top: 6%">
-    <button (click)="paginate()" style="margin-left: 1%">Tìm kiếm</button>
+  <div class="col-lg-4">
+    <input class="search"  type="search" [(ngModel)]="nameSearch"
+           placeholder="Bạn muốn tìm gì?...">
+    <button class="btn btn-timKiem" (click)="paginate()" style="margin-left: 1%">
+      <span class='bi bi-search' style="color: #2041FF"></span>
+    </button>
   </div>
-
 </div>
 <div class="row"><H1 CLASS="text-center">SẢN PHẨM BÁN CHẠY</H1></div>
 
@@ -63,9 +65,10 @@
     </div>
   </div>
   <div class="row">
-      <button  class="btn-xem-them " style="width: 9%;margin-left: 45.2%" *ngIf="pageSize <= (total$ | async)" (click)="nextPage()">
-        <span class='bi bi-caret-right'> Xem thêm</span>
-      </button>
+    <button class="btn-xem-them " style="width: 9%;margin-left: 45.2%" *ngIf="pageSize <= (total$ | async)"
+            (click)="nextPage()">
+      <span class='bi bi-caret-right'> Xem thêm</span>
+    </button>
   </div>
 </div>
 

@@ -1,0 +1,55 @@
+<div class="row cart-product-body">
+  <div class="cart-product-pay">
+    <h2 style="text-align: center;margin-top: 1.6%">LỊCH SỬ MUA HÀNG: <span style="color: #DC143C">{{username}}</span></h2>
+    <hr style="color: #a50318">
+    <table class="table text-center">
+      <thead class="text-center">
+      <tr>
+        <th></th>
+        <th class="text-left">Thông tin chi tiết sản phẩm</th>
+        <th>Size</th>
+        <th>Đơn giá</th>
+        <th>Số lượng</th>
+        <th>Tổng giá</th>
+        <th>Ngày thanh toán</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let item of cartHistory; index as i">
+      <tr>
+        <td>
+          <img src="{{item.image}}" id="expandedImg"
+               style="width:70%;margin-left:20%;height: 80px;width: 100px">
+        </td>
+        <td class="text-left content-info">
+          <div style="margin-top: 3.6%">
+            <h4 style="color: #2041FF">{{item.name}}</h4>
+          </div>
+        </td>
+        <td>
+          <div style="margin-top: 54%">
+            <span  class="content-info">{{item.size}}</span>
+          </div>
+        </td>
+        <td>
+          <div style="margin-top: 17%">{{item.price | number}} VNĐ
+          </div>
+        </td>
+        <td>
+          <div class="buttons_added" style="margin-top: 25%">
+            <input readonly aria-label="quantity" class="input-qty" max="999" min="1" name="" type="number"
+                   value="{{item.quantity}}">
+          </div>
+        </td>
+        <td>
+          <div style="margin-top: 18%">{{item.total | number}} ₫</div></td>
+        <td>
+          <div style="margin-top: 11%">
+           {{item.dayPayment}}
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

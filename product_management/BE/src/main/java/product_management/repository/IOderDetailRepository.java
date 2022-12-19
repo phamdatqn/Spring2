@@ -79,4 +79,21 @@ public interface IOderDetailRepository extends JpaRepository<OrderDetail, Intege
     @Modifying
     @Query(value = "delete from order_detail where id =:id ",nativeQuery = true)
     void deleteProduct(@Param("id")Integer id);
+
+    @Modifying
+    @Query(value = "update order_detail set is_pay = 1 where customer_id =:customerId ",nativeQuery = true)
+    void payment(@Param("customerId") Integer customerId);
+
+
+    @Query(value = "select order_detail.id as id, customer.name as customerName, product.name as name, " +
+            "order_detail.product_size_id as productSizeId, order_detail.day_payment as dayPayment,size.name as size, product.price as price, " +
+            "product.discount as Discount, order_detail.quantity as quantity, product.image as image, " +
+            "(product.price * order_detail.quantity) as total " +
+            "from order_detail " +
+            "join customer on order_detail.customer_id = customer.id " +
+            "join product_size on order_detail.product_size_id = product_size.id " +
+            "join product on product.id = product_size.product_id " +
+            "join size on product_size.size_id = size.id " +
+            "where username = :username and order_detail.is_delete = 0 and is_pay = 1 ", nativeQuery = true)
+    List<ICartDto> findAllHistory(@Param("username") String username);
 }

@@ -29,8 +29,8 @@ export class HeaderComponent implements OnInit {
 
   showUsername() {
     this.username = this.tokenService.getUser().username;
-    console.log('und');
-    console.log(this.tokenService.getUser());
+    // console.log('und');
+    // console.log(this.tokenService.getUser());
     this.roles = this.tokenService.getUser().roles;
     this.isCustomer = this.roles.indexOf('ROLE_CUSTOMER') !== -1;
     this.isEmployee = this.roles.indexOf('ROLE_EMPLOYEE') !== -1;

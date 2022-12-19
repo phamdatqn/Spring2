@@ -34,13 +34,21 @@ public class ProductController {
     private IOderDetailService oderDetailService;
 
     @GetMapping("list")
-    public ResponseEntity<Page<IProductDto>> showListNameSearch(@PageableDefault(value = 4) Pageable pageable,
-                                                                @RequestParam(value = "nameSearch", defaultValue = "") String nameSearch) {
+    public ResponseEntity<Page<IProductDto>> showListNameSearch(@PageableDefault(value = 4) Pageable pageable, @RequestParam(value = "nameSearch", defaultValue = "") String nameSearch) {
         Page<IProductDto> productDtoPage = productService.findAllProductByName(pageable, nameSearch);
         if (productDtoPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(productDtoPage, HttpStatus.OK);
+    }
+
+    @GetMapping("history/{username}")
+    public ResponseEntity<List<ICartDto>> showHistory(@PathVariable("username") String username) {
+        List<ICartDto> cartDtoList = oderDetailService.findAllHistory(username);
+        if (cartDtoList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(cartDtoList, HttpStatus.OK);
     }
 
     @GetMapping(value = "detail/{id}")
@@ -99,9 +107,15 @@ public class ProductController {
         return new ResponseEntity<>(sumQuantityCart, HttpStatus.OK);
     }
 
-    @DeleteMapping ("delete/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<Integer> deleteProduct(@PathVariable("id") Integer id) {
         oderDetailService.deleteProduct(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("payment/{username}")
+    public ResponseEntity<OrderDetail> payment(@PathVariable("username") String username) {
+        oderDetailService.payment(username);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

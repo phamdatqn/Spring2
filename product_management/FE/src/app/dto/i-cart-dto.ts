@@ -10,4 +10,5 @@ export interface ICartDto {
   image?: string;
   total?: number;
   totalBill?: number;
+  dayPayment?: string;
 }

@@ -44,6 +44,10 @@ export class ProductService {
     return this.httpClient.get<ICartDto[]>(this.URL + '/cart-list/' + username);
   }
 
+  history(username: string): Observable<ICartDto[]> {
+    return this.httpClient.get<ICartDto[]>(this.URL + '/history/' + username);
+  }
+
   totalBill(username: string): Observable<number> {
     return this.httpClient.get<number>(this.URL + '/total-bill/' + username);
   }
@@ -63,4 +67,9 @@ export class ProductService {
   deleteProduct(id: number): Observable<void> {
     return this.httpClient.delete<void>(this.URL + '/delete/' + id);
   }
+
+  payment(username: string): Observable<void> {
+    return this.httpClient.get<void>(this.URL + '/payment/' + username);
+  }
+
 }

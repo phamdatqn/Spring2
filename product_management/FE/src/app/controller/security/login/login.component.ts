@@ -82,7 +82,6 @@ export class LoginComponent implements OnInit {
           showConfirmButton: false,
           timer: 2000
         });
-        this.shareService.sendClickEvent();
         window.location.replace('');
       },
       err => {

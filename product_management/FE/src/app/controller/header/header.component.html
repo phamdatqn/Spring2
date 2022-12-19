@@ -15,7 +15,7 @@
         <div class="col-lg-4">
           <div class="row">
           <span class="login" routerLink="/login" *ngIf="username==''">
-            <button class="logInLogOut" >
+            <button class="logInLogOut">
               Đăng nhập
             </button>
           </span>
@@ -33,7 +33,7 @@
     <nav class="navbar navbar-expand-lg navbar-light"
          style="background: #DF1442;height: 40px;font-size: 20px">
       <div class="collapse navbar-collapse" id="navbarEmployee">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 " style="margin-left: 3%">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 " style="margin-left: 3%;list-style: none">
           <li class="nav-item dropdown doiMau">
             <a class="nav-link dropdown-toggle doiMau" href="#" role="button"
                data-bs-toggle="dropdown" style="color: white">
@@ -135,13 +135,39 @@
           </li>
         </ul>
       </div>
-        <div>
-          <a class="nav-link  chu_menu" routerLink="/product/cart-list/{{username}}" role="button"
-             data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
-            <span class='bi bi-cart3'></span>
-            Giỏ hàng ({{sumQuantityCart}})
+
+      <div style="list-style: none">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle chu_menu" href="#" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false" style="color: white;margin-top: 24%" >
+            GIỎ HÀNG
           </a>
-        </div>
+          <ul class="dropdown-menu" aria-labelledby="navbarEmployee" style="list-style: none">
+            <li>
+              <a class="nav-link  chu_menu" routerLink="/product/cart-list/{{username}}" role="button"
+                 data-bs-toggle="dropdown" aria-expanded="false" style="color: green">
+                <span class='bi bi-cart3'></span>
+                Giỏ hàng ({{sumQuantityCart}})
+              </a>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item" href="/history/{{username}}">
+                <span style="color: green">Lịch sử đã mua</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <a class="nav-link  chu_menu" routerLink="/product/cart-list/{{username}}" role="button"
+           data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
+          <span class='bi bi-cart3'></span>
+          Giỏ hàng ({{sumQuantityCart}})
+        </a>
+      </div>
+
       <div>
         <a (click)="reload()">
           <span class="bi bi-check2-circle" style="color: white"></span>

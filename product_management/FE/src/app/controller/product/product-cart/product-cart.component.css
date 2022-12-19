@@ -1,3 +1,7 @@
+.content-info{
+  margin-top: 50%;
+}
+
 #imgtext {
   position: absolute;
   bottom: 15px;
@@ -21,8 +25,14 @@
   padding-bottom: 20px;
   color: black;
 }
-.bill-pay-body .total-pay{
-  margin-left: 47%;
+.btn-xoa{
+  color: white;
+  background: #DF1442;
+  border-radius: 5px ;
+  border: 2px #2D7AF7;
+}
+.btn-xoa:hover{
+  border: yellowgreen;
 }
 .bill-pay-body .form-control{
   height: 70px;
