@@ -14,17 +14,19 @@
         <div class="col-lg-4"></div>
         <div class="col-lg-8">
           <div class="row">
-          <span class="login" routerLink="/login" *ngIf="username==''"  style="font-size: 30px">
-             <span class="bi bi-box-arrow-in-right" style="margin-top: 90%;color: #c80000"></span>
+            <a routerLink="/login" *ngIf="username==''">
+            <span class="login" style="font-size: 30px">
+               <span class="bi bi-box-arrow-in-right" style="margin-top: 90%;color: #c80000"></span>
             <span class="logInLogOut" style="margin-left: 4%">Đăng nhập</span>
-          </span>
+            </span>
+            </a>
             <a routerLink="/view/customer/{{username}}">
-            <span style="color: orange;text-align: center;font-size: 30px" >
+            <span style="color: orange;text-align: center;font-size: 30px">
             <i class="bi bi-person-square"></i>
               {{username}}
             </span>
             </a>
-            <span style="font-size: 30px"  class="logInLogOut" (click)="whenLogout()" *ngIf="username!=''">
+            <span  *ngIf="username!=''"  (click)="whenLogout()" style="font-size: 30px" class="logInLogOut" >
               <span class="bi bi-box-arrow-in-left"></span>
               Đăng xuất
             </span>
@@ -141,50 +143,46 @@
       </div>
 
       <div style="list-style: none">
-        <li class="nav-item dropdown" >
+        <li class="nav-item dropdown">
           <a *ngIf="username==''" class="nav-link dropdown-toggle chu_menu" routerLink="/login" role="button"
-             data-bs-toggle="dropdown" aria-expanded="false" style="color: white;margin-top: 24%;margin-left: 20%">
+             data-bs-toggle="dropdown" aria-expanded="false" style="color: white;margin-left: 3%">
             GIỎ HÀNG
           </a>
-          <a *ngIf="username!=''" class="nav-link dropdown-toggle chu_menu"  role="button"
-             data-bs-toggle="dropdown" aria-expanded="false" style="color: white;margin-top: 24%;margin-left: 20%">
+          <a *ngIf="username!=''" class="nav-link dropdown-toggle chu_menu" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false" style="color: white;margin-left: 3%">
             GIỎ HÀNG
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarEmployee" style="list-style: none">
-            <li>
-              <a class="nav-link  chu_menu" routerLink="/product/cart-list/{{username}}" role="button"
+          <ul class="dropdown-menu" aria-labelledby="navbarEmployee" style="list-style: none"  *ngIf="username!=''"  >
+            <li >
+              <a  class="nav-link  chu_menu" routerLink="/product/cart-list/{{username}}" role="button"
                  data-bs-toggle="dropdown" aria-expanded="false" style="color: green">
                 <span class='bi bi-cart3'></span>
-                Giỏ hàng ({{sumQuantityCart}})
+                <span >Giỏ hàng ({{sumQuantityCart}})</span>
               </a>
             </li>
 
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li >
+            <li>
               <a class="dropdown-item" routerLink="/history/{{username}}">
                 <span style="color: green">Lịch sử đã mua</span>
               </a>
             </li>
           </ul>
         </li>
-        <div >
-        <a class="nav-link  chu_menu" routerLink="/product/cart-list/{{username}}" role="button"
-           data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
-          <span class='bi bi-cart3'></span>
-          Giỏ hàng ({{sumQuantityCart}})
-        </a>
-        </div>
+
       </div>
 
 
-        <a (click)="reload()" style="color: white">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
-            <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
-          </svg>
-        </a>
+      <a (click)="reload()" style="color: white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise"
+             viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+          <path
+            d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+        </svg>
+      </a>
 
     </nav>
   </div>

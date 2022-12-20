@@ -42,7 +42,7 @@
 </div>
 <div class="row"><H1 CLASS="text-center">SẢN PHẨM BÁN CHẠY</H1></div>
 
-<div class="row  mb-5 nav justify-content-center" *ngIf="action">
+<div class="row  mb-5 justify-content-center" *ngIf="action">
   <div class="row" style="margin-left: 12%">
     <div class="card" style="width: 18rem;" *ngFor="let item of (productList$ | async)">
       <a routerLink="/product/detail/{{item.id}}">
