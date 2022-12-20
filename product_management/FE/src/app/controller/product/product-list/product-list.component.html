@@ -33,7 +33,7 @@
     <img src="../assets/images/coollogo.gif" style="margin-left: 30%">
   </div>
   <div class="col-lg-4">
-    <input class="search"  type="search"[(ngModel)]="nameSearch"
+    <input class="search" type="search" [(ngModel)]="nameSearch"
            placeholder="Bạn muốn tìm gì?...">
     <button class="btn btn-timKiem" (click)="paginate()" style="margin-left: 1%">
       <span class='bi bi-search' style="color: #2041FF"></span>
@@ -61,6 +61,19 @@
           <span class='bi bi-cart4'></span>
           <span style="margin-left: 2%">Thêm vào giỏ hàng</span>
         </a>
+      </div>
+
+      <div class="row" style="margin-bottom: 3%" *ngIf="isAdmin">
+        <div class="col-lg-6">
+          <button class="btn-update">
+            <i class="bi bi-brush-fill"></i>
+          </button>
+        </div>
+        <div class="col-lg-6">
+          <button class="btn-delete">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>

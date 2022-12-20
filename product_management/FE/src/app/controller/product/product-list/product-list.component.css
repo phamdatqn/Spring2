@@ -38,3 +38,23 @@
 .btn-xem-them:hover{
   color: #DF1442;
 }
+.btn-update{
+  margin-left: 25%;
+  color: darkslategray;
+  width: 50%;
+  border: solid 2px darkslategray;
+}
+.btn-update:hover {
+  border: solid 2px indigo;
+}
+
+.btn-delete{
+  margin-left: 25%;
+
+  width: 50%;
+  border: solid 2px #DF1442;
+  color: #DF1442;
+}
+.btn-delete:hover {
+  border: solid 2px darkslategray;
+}

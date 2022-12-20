@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
 import {IProductDto} from '../../../dto/i-product-dto';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {ProductService} from '../../../service/product.service';
 import {Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
+import {TokenStorageService} from '../../../service/token-storage.service';
 
 @Component({
   selector: 'app-product-list',
@@ -22,7 +22,12 @@ export class ProductListComponent implements OnInit {
   totalRecord = 0;
   productNameDelete: string;
   productIdDelete: number;
+  roles: string[] = [];
+  isCustomer = false;
+  isAdmin = false;
+  isEmployee = false;
   constructor(private productService: ProductService,
+              private tokenService: TokenStorageService,
               private router: Router,
               private title: Title) {
     this.title.setTitle('Trang chủ');
@@ -30,7 +35,16 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.paginate();
+    this.getRoles();
   }
+
+  getRoles() {
+    this.roles = this.tokenService.getUser().roles;
+    this.isCustomer = this.roles.indexOf('ROLE_CUSTOMER') !== -1;
+    this.isEmployee = this.roles.indexOf('ROLE_EMPLOYEE') !== -1;
+    this.isAdmin = this.roles.indexOf('ROLE_ADMIN') !== -1;
+  }
+
   paginate() {
     this.productService.findAllListProduct(this.pageSize, this.nameSearch).subscribe(data => {
       if (data != null) {
