@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ICustomer} from '../../../model/icustomer';
 import {TokenStorageService} from '../../../service/token-storage.service';
 import {InfoCustomerService} from '../../../service/info-customer.service';
+import {HttpEvent} from '@angular/common/http';
 
 @Component({
   selector: 'app-info-customer',
@@ -17,7 +18,6 @@ export class InfoCustomerComponent implements OnInit {
   ngOnInit(): void {
     this.getUsername();
     this.getViewInfo();
-    console.log(this.getViewInfo());
   }
 
   getUsername(): void {
@@ -26,7 +26,7 @@ export class InfoCustomerComponent implements OnInit {
 
   getViewInfo(): void {
     this.infoCustomerService.viewInfo(this.username).subscribe(value => {
-      this.viewInfo = value;
+      this.viewInfo = value as ICustomer;
     });
   }
 }

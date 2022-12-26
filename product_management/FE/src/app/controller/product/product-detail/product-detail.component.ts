@@ -6,7 +6,9 @@ import {Product} from '../../../model/product';
 import {IProductSizeDto} from '../../../dto/iproduct-size-dto';
 import {TokenStorageService} from '../../../service/token-storage.service';
 import Swal from 'sweetalert2';
-import {render} from 'creditcardpayments/creditCardPayments';
+import {HttpEvent} from '@angular/common/http';
+import {IProductDto} from '../../../dto/i-product-dto';
+
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -16,7 +18,7 @@ export class ProductDetailComponent implements OnInit {
   quantityChoose = 1;
   productSizeIdChoose = 0;
   productSizeList: IProductSizeDto[];
-  product: Product;
+  product: IProductDto;
   id: number;
   username;
 
@@ -37,7 +39,7 @@ export class ProductDetailComponent implements OnInit {
     this.title.setTitle('Chi tiết sản phẩm');
     this.id = Number(this.activatedRoute.snapshot.params.id);
     this.productService.findById(this.id).subscribe(value => {
-      this.product = value;
+      this.product = value as IProductDto;
     });
   }
 
@@ -52,7 +54,9 @@ export class ProductDetailComponent implements OnInit {
 
   getALlProductSize(): void {
     this.productService.findAllSizeByIdProduct(this.id).subscribe(sizeList => {
-      this.productSizeList = sizeList;
+      this.productSizeList = sizeList as unknown as IProductSizeDto[]  ;
+      console.log('this.productSizeList ');
+      console.log(this.productSizeList );
     });
   }
 
@@ -74,9 +78,9 @@ export class ProductDetailComponent implements OnInit {
           title: 'Thêm giỏ hàng thành công !',
           showConfirmButton: false,
           timer: 1000
-        }).then(r =>       window.location.replace('product'));
+        }).then(r => window.location.replace('product'));
       });
     }
-    }
+  }
 
 }

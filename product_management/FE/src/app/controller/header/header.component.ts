@@ -3,6 +3,7 @@ import {TokenStorageService} from '../../service/token-storage.service';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
 import {ProductService} from '../../service/product.service';
+import {HttpEvent} from '@angular/common/http';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
   isCustomer = false;
   isAdmin = false;
   isEmployee = false;
-  sumQuantityCart = 0;
+  sumQuantityCart: HttpEvent<number> ;
   constructor(private tokenService: TokenStorageService,
               private productService: ProductService,
               private router: Router) {

@@ -11,15 +11,25 @@ import {AuthGuard} from '../security/auth.guard';
 
 const routes: Routes = [
   {path: '', component: ProductListComponent},
+
   {path: 'create', component: ProductCreateComponent},
-  {path: 'edit/:id', component: ProductEditComponent},
+
+  {path: 'update/:id',
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['ROLE_ADMIN']
+    }, component: ProductEditComponent},
+
   {path: 'detail/:id',
     component: ProductDetailComponent},
+
   {path: 'cart-list/:username',
     canActivate: [AuthGuard],
     data: {
       roles: ['ROLE_CUSTOMER', 'ROLE_ADMIN']
-    }, component: ProductCartComponent},
+    },
+    component: ProductCartComponent},
+
   {path: 'history/:username',
     canActivate: [AuthGuard],
     data: {

@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {Observable} from 'rxjs';
 import {ICartDto} from '../../../dto/i-cart-dto';
+import {HttpEvent} from '@angular/common/http';
 
 @Component({
   selector: 'app-product-history',
@@ -13,7 +14,7 @@ import {ICartDto} from '../../../dto/i-cart-dto';
 })
 export class ProductHistoryComponent implements OnInit {
   username: string;
-  cartHistory: ICartDto[];
+  cartHistory: HttpEvent<ICartDto[]>;
   constructor(private productService: ProductService,
               private tokenService: TokenStorageService,
               private router: Router,

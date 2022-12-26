@@ -1,12 +1,6 @@
-package product_management.model;
+package product_management.dto;
 
-import javax.persistence.*;
-
-@Entity
-public class Product {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProductDto {
     private Integer id;
     private String name;
     private int price;
@@ -15,21 +9,17 @@ public class Product {
     private String describe;
     private String image;
 
-
-    @ManyToOne
-    @JoinColumn(name = "product_type_id", referencedColumnName = "id")
-    private ProductType productType;
-
-
-    public Product() {
+    public ProductDto() {
     }
 
-    public String getDescribe() {
-        return describe;
-    }
-
-    public void setDescribe(String describe) {
+    public ProductDto(Integer id, String name, int price, int discount, String manufacturer, String describe, String image, int quantity) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.discount = discount;
+        this.manufacturer = manufacturer;
         this.describe = describe;
+        this.image = image;
     }
 
     public Integer getId() {
@@ -72,20 +62,20 @@ public class Product {
         this.manufacturer = manufacturer;
     }
 
+    public String getDescribe() {
+        return describe;
+    }
+
+    public void setDescribe(String describe) {
+        this.describe = describe;
+    }
+
     public String getImage() {
         return image;
     }
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public ProductType getProductType() {
-        return productType;
-    }
-
-    public void setProductType(ProductType productType) {
-        this.productType = productType;
     }
 
 }

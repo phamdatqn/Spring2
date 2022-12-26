@@ -2,7 +2,7 @@
   <div class="cart-product-pay">
     <h2 style="text-align: center">GIỎ HÀNG: <span style="color: #DC143C">{{username}}</span></h2>
     <hr style="color: #a50318">
-    <table class="table text-center">
+    <table class="table text-center" *ngIf="oderDetailList">
       <thead class="text-center">
       <tr>
         <th></th>
@@ -100,7 +100,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteProduct(idDelete)">Xóa
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteCart(idDelete)">Xóa
         </button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>

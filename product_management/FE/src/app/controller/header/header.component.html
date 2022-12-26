@@ -142,7 +142,7 @@
         </ul>
       </div>
 
-      <div style="list-style: none">
+      <div style="list-style: none" *ngIf="!isAdmin">
         <li class="nav-item dropdown">
           <a *ngIf="username==''" class="nav-link dropdown-toggle chu_menu" routerLink="/login" role="button"
              data-bs-toggle="dropdown" aria-expanded="false" style="color: white;margin-left: 3%">

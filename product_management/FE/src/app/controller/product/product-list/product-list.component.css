@@ -39,22 +39,35 @@
   color: #DF1442;
 }
 .btn-update{
-  margin-left: 25%;
-  color: darkslategray;
-  width: 50%;
-  border: solid 2px darkslategray;
+  margin-left: 37%;
+  color: #FA6F2B;
+  width:25%;
+  border: solid 2px #FA6F2B;
 }
 .btn-update:hover {
-  border: solid 2px indigo;
+  border: solid 2px #FA3113;
+  color: #FA3113;
 }
 
 .btn-delete{
-  margin-left: 25%;
-
+  background: white;
+  margin-left: 85%;
   width: 50%;
-  border: solid 2px #DF1442;
+  border: 0;
   color: #DF1442;
 }
 .btn-delete:hover {
-  border: solid 2px darkslategray;
+  border: solid 2px red;
+}
+
+.btn-themMoi{
+  margin-left: 25%;
+  border: solid 2px #4C75F5;
+  color: #4C75F5;
+}
+
+.btn-themMoi:hover{
+  margin-left: 25%;
+  border: solid 2px #401FEB;
+  color: #401FEB;
 }

@@ -1,0 +1,40 @@
+.chuLonTieuDe{
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.tenSanPham{
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 25px;
+}
+.moTa{
+
+}
+.size {
+  margin-right: 10px;
+}
+
+.size:first-of-type {
+  margin-left: 40px;
+}
+.btn-addCart{
+  border: solid 2px yellowgreen;
+}
+.btn-addCart:hover {
+  border: solid 2px green;
+
+}
+.btn-update{
+  margin-left: 34%;
+  color: #FA6F2B;
+  width:12%;
+  border: solid 2px #FA6F2B;
+}
+.btn-update:hover {
+  border: solid 2px #FA3113;
+  color: #FA3113;
+}
+.giaTien::before {
+  content:"VNĐ";
+}

@@ -3,9 +3,12 @@ package product_management.repository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 import product_management.dto.IProductDto;
+import product_management.dto.ProductDto;
 import product_management.model.Product;
 
 import java.util.Optional;
@@ -24,16 +27,29 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
                     "join product_size on product.id = product_size.product_id " +
                     "join product_type on product.product_type_id = product_type.id " +
                     "where product.name like %:nameSearch%  and product.is_delete = 0 " +
-                    "group by product.id having sum(product_size.quantity) > 0",nativeQuery = true)
+                    "group by product.id having sum(product_size.quantity) > 0", nativeQuery = true)
     Page<IProductDto> findAllProductByName(Pageable pageable,
-                                     @Param("nameSearch") String nameSearch);
+                                           @Param("nameSearch") String nameSearch);
 
     @Query(value = "select * from product where price =:priceSearch and is_delete = 0 ",
-            countQuery = "select count(*) from product where price =:priceSearch and is_delete = 0 ",nativeQuery = true)
+            countQuery = "select count(*) from product where price =:priceSearch and is_delete = 0 ", nativeQuery = true)
     Page<Product> findAllProductByPrice(Pageable pageable,
-                                       @Param("priceSearch") int priceSearch);
+                                        @Param("priceSearch") int priceSearch);
 
     @Query(value = "select * from product where id =:idSearch and is_delete = 0 ",
-            countQuery = "select count(*) from product where id =:idSearch and is_delete = 0 ",nativeQuery = true)
+            countQuery = "select count(*) from product where id =:idSearch and is_delete = 0 ", nativeQuery = true)
     Optional<Product> findById(@Param("idSearch") Integer id);
+
+    @Modifying
+    @Transactional
+    @Query(value = "update product set name =:#{#p.name}, price =:#{#p.price}, discount =:#{#p.discount}, " +
+            "manufacturer =:#{#p.manufacturer}, `describe` =:#{#p.describe} where id=:#{#p.id} ",
+            nativeQuery = true)
+    void updateProduct(@Param("p") ProductDto productDto);
+
+    @Modifying
+    @Transactional
+    @Query(value = "update product set is_delete = 1 where id=:id ",
+            nativeQuery = true)
+    void deleteProduct(@Param("id") Integer id);
 }

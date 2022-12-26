@@ -41,10 +41,27 @@
   </div>
 </div>
 <div class="row"><H1 CLASS="text-center">SẢN PHẨM BÁN CHẠY</H1></div>
-
+<div class="row" *ngIf="isAdmin">
+  <div class="col-lg-4">
+    <button class="btn-themMoi">
+      <i class="bi bi-file-earmark-plus"></i>
+      Thêm mới
+    </button>
+  </div>
+  <div class="col-lg-4">
+  </div>
+  <div class="col-lg-4"></div>
+</div>
 <div class="row  mb-5 justify-content-center" *ngIf="action">
   <div class="row" style="margin-left: 12%">
     <div class="card" style="width: 18rem;" *ngFor="let item of (productList$ | async)">
+
+        <button class="btn-delete" style="width: 20%" *ngIf="isAdmin"
+                data-bs-toggle="modal" data-bs-target="#delProduct"
+                (click)="getInfoDelete(item.id, item.name, item.image)">
+          <i class="bi bi-trash"></i>
+        </button>
+
       <a routerLink="/product/detail/{{item.id}}">
         <img src="{{item.image}}" class="card-img-top" alt="..." height="250">
       </a>
@@ -56,7 +73,7 @@
         <span>{{item.price | number}} VNĐ</span>
       </div>
 
-      <div class=" text-center">
+      <div class=" text-center" *ngIf="!isAdmin">
         <a routerLink="/product/detail/{{item.id}}">
           <span class='bi bi-cart4'></span>
           <span style="margin-left: 2%">Thêm vào giỏ hàng</span>
@@ -64,16 +81,9 @@
       </div>
 
       <div class="row" style="margin-bottom: 3%" *ngIf="isAdmin">
-        <div class="col-lg-6">
-          <button class="btn-update">
+          <button class="btn-update" routerLink="/product/update/{{item.id}}">
             <i class="bi bi-brush-fill"></i>
           </button>
-        </div>
-        <div class="col-lg-6">
-          <button class="btn-delete">
-            <i class="bi bi-trash"></i>
-          </button>
-        </div>
       </div>
     </div>
   </div>
@@ -85,3 +95,37 @@
   </div>
 </div>
 
+
+<!-- Modal Delete -->
+<div class="modal fade" id="delProduct" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header row">
+        <div>
+          <button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="text-center">
+          <b><span style="color: #a50318;font-size: 30px">XÓA SẢN PHẨM </span></b>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <span class="text-center" style="color: #a50318;font-size: 20px"><b>{{nameDelete}}</b></span>
+        </div>
+        <div class="row">
+          <div class="col-lg-4"></div>
+          <div class="col-lg-4">
+            <img src="{{imageDelete}}" width="60%" style="margin-left: 25%">
+          </div>
+          <div class="col-lg-4"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteProduct(idDelete)">Xóa
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

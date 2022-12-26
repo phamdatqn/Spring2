@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import product_management.dto.IProductDto;
+import product_management.dto.ProductDto;
 import product_management.model.Product;
 import product_management.repository.IProductRepository;
 import product_management.service.product.IProductService;
@@ -30,5 +31,15 @@ public class ProductService implements IProductService {
     @Override
     public Optional<Product> findById(Integer idSearch) {
         return productRepository.findById(idSearch);
+    }
+
+    @Override
+    public void updateProduct(ProductDto productDto) {
+        productRepository.updateProduct(productDto);
+    }
+
+    @Override
+    public void deleteProduct(Integer id) {
+        productRepository.deleteProduct(id);
     }
 }

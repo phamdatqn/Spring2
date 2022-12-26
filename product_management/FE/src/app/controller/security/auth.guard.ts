@@ -20,6 +20,7 @@ export class AuthGuard implements CanActivate {
     const currentUser = this.tokenStorageService.getUser();
     if (currentUser !== null) {
       const role = currentUser.roles;
+      console.log('11' + role);
       if (role.indexOf(route.data.roles[0]) === -1) {
         this.router.navigate(['/login'], {
           queryParams: {returnUrl: state.url}

@@ -5,6 +5,7 @@ import {ProductService} from '../../../service/product.service';
 import {Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {TokenStorageService} from '../../../service/token-storage.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-list',
@@ -26,6 +27,10 @@ export class ProductListComponent implements OnInit {
   isCustomer = false;
   isAdmin = false;
   isEmployee = false;
+  idDelete: number;
+  imageDelete: string;
+  nameDelete: string;
+
   constructor(private productService: ProductService,
               private tokenService: TokenStorageService,
               private router: Router,
@@ -47,6 +52,7 @@ export class ProductListComponent implements OnInit {
 
   paginate() {
     this.productService.findAllListProduct(this.pageSize, this.nameSearch).subscribe(data => {
+      console.log(data);
       if (data != null) {
         this.action = true;
         this.productList$ = new BehaviorSubject<IProductDto[]>(data.content);
@@ -62,20 +68,21 @@ export class ProductListComponent implements OnInit {
     this.paginate();
   }
 
-  // getInfoSavingDelete(id: number, name: string): void {
-  //   this.productIdDelete = id;
-  //   this.productNameDelete = name;
-  // }
-  //
-  // deleteProduct() {
-  //   this.productService.delete(this.productIdDelete).subscribe();
-  //   // @ts-ignore
-  //   Swal.fire({
-  //     position: 'top-mid',
-  //     icon: 'success',
-  //     title: 'Đã xóa thành công !',
-  //     showConfirmButton: false,
-  //     timer: 1500
-  //   });
-  // }
+  getInfoDelete(id: number, name: string, image: string) {
+    this.idDelete = id;
+    this.imageDelete = image;
+    this.nameDelete = name;
+  }
+
+  deleteProduct(idDelete: number): void {
+    this.productService.deleteProduct(idDelete).subscribe(value => {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Xóa thành công !',
+        showConfirmButton: false,
+        timer: 1000
+      }).then(r => window.location.reload());
+    });
+  }
 }

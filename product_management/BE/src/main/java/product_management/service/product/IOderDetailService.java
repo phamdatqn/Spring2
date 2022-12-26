@@ -23,7 +23,7 @@ public interface IOderDetailService {
 
     Integer sumQuantityCart(String username);
 
-    void deleteProduct(Integer id);
+    void deleteCart(Integer id);
 
     void payment(String username);
 }

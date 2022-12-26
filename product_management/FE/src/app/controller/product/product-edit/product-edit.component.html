@@ -1,1 +1,39 @@
-<p>product-edit works!</p>
+<main role="main">
+  <h3 class="chuLonTieuDe" style="margin-top: 20px"><strong>Chỉnh sửa sản phẩm</strong></h3>
+  <div class="container mt-4">
+    <div class="card">
+      <div class="container-fliud row" [formGroup]="editForm">
+        <div class="col-lg-4">
+          <img src="{{product.image}}" style="width: 350px">
+        </div>
+        <div class="col-lg-8">
+          <div class="row mt-4">
+            <label for="name">Tên sản phẩm: </label>
+            <input id=name formControlName="name" style="width: 50%">
+          </div>
+          <div class="row mt-4">
+            <label for="price">Giá: </label>
+            <input class="giaTien" type="number" id=price formControlName="price" style="width: 50% ">
+          </div>
+          <div class="row mt-4">
+            <label for="discount">Giảm giá: </label>
+            <input id=discount formControlName="discount" style="width: 50%">
+          </div>
+          <div class="row mt-4">
+            <label for="manufacturer">Hãng sản xuất: </label>
+            <input id=manufacturer formControlName="manufacturer" style="width: 50%">
+          </div>
+          <div class="row mt-4">
+            <label for="image">Hình ảnh: </label>
+            <input id=image formControlName="image" style="width: 50%">
+          </div>
+        </div>
+        <div class="row mb-5">
+          <button class="btn-update" (click)="updateProduct()">
+            <i class="bi bi-pencil-square"></i><span style="margin-left: 1%">Cập nhật</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

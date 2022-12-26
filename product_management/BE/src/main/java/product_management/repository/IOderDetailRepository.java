@@ -80,7 +80,7 @@ public interface IOderDetailRepository extends JpaRepository<OrderDetail, Intege
 
     @Modifying
     @Query(value = "delete from order_detail where id =:id ",nativeQuery = true)
-    void deleteProduct(@Param("id")Integer id);
+    void deleteCart(@Param("id")Integer id);
 
     @Modifying
     @Query(value = "update order_detail set is_pay = 1 where customer_id =:customerId ",nativeQuery = true)

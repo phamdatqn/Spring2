@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.*;
 import product_management.dto.ICartDto;
 import product_management.dto.IProductDto;
 import product_management.dto.IProductSizeDto;
+import product_management.dto.ProductDto;
 import product_management.model.OrderDetail;
 import product_management.model.Product;
 import product_management.service.product.IOderDetailService;
 import product_management.service.product.IProductService;
 import product_management.service.product.IProductSizeService;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -108,9 +110,9 @@ public class ProductController {
         return new ResponseEntity<>(sumQuantityCart, HttpStatus.OK);
     }
 
-    @DeleteMapping("delete/{id}")
-    public ResponseEntity<Integer> deleteProduct(@PathVariable("id") Integer id) {
-        oderDetailService.deleteProduct(id);
+    @DeleteMapping("delete-cart/{id}")
+    public ResponseEntity<Integer> deleteCart(@PathVariable("id") Integer id) {
+        oderDetailService.deleteCart(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -120,4 +122,20 @@ public class ProductController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PatchMapping("update")
+    public ResponseEntity<ProductDto> updateProduct(@RequestBody @Valid ProductDto productDto) {
+        Optional<Product> product = productService.findById(productDto.getId());
+        if (product.isPresent()) {
+            productService.updateProduct(productDto);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<Integer> deleteProduct(@PathVariable("id") Integer id) {
+        productService.deleteProduct(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

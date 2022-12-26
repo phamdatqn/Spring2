@@ -67,8 +67,8 @@ public class OderDetailService implements IOderDetailService {
     }
 
     @Override
-    public void deleteProduct(Integer id) {
-        oderDetailRepository.deleteProduct(id);
+    public void deleteCart(Integer id) {
+        oderDetailRepository.deleteCart(id);
     }
 
     @Override

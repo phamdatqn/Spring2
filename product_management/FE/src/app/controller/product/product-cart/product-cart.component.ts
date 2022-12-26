@@ -6,6 +6,7 @@ import {ICartDto} from '../../../dto/i-cart-dto';
 import {TokenStorageService} from '../../../service/token-storage.service';
 import Swal from 'sweetalert2';
 import {render} from 'creditcardpayments/creditCardPayments';
+import {HttpEvent} from '@angular/common/http';
 
 @Component({
   selector: 'app-product-cart',
@@ -16,7 +17,7 @@ export class ProductCartComponent implements OnInit {
 
   oderDetailList: ICartDto[];
   username: string;
-  totalBill = 0;
+  totalBill: number ;
   idDelete: number;
   imageDelete: string;
   nameDelete: string;
@@ -44,7 +45,7 @@ export class ProductCartComponent implements OnInit {
 
   getAllOderDetail(): void {
     this.productService.findAllCartListByUsername(this.username).subscribe(value => {
-      this.oderDetailList = value;
+      this.oderDetailList = value as unknown as ICartDto[];
     });
   }
 
@@ -64,7 +65,7 @@ export class ProductCartComponent implements OnInit {
 
   getTotalBill(): void {
     this.productService.totalBill(this.username).subscribe(value => {
-      this.totalBill = value;
+      this.totalBill = value as unknown as number;
     });
   }
 
@@ -75,15 +76,15 @@ export class ProductCartComponent implements OnInit {
     this.sizeDelete = size;
   }
 
-  deleteProduct(idDelete: number): void {
-    this.productService.deleteProduct(idDelete).subscribe(value => {
+  deleteCart(idDelete: number): void {
+    this.productService.deleteCart(idDelete).subscribe(value => {
       Swal.fire({
         position: 'center',
         icon: 'success',
         title: 'Xóa thành công !',
         showConfirmButton: false,
         timer: 1000
-      }).then(r =>    window.location.reload());
+      }).then(r =>   window.location.reload());
     });
   }
 
@@ -96,7 +97,8 @@ export class ProductCartComponent implements OnInit {
         title: 'Thanh toán thành công !',
         showConfirmButton: false,
         timer: 1000
-      }).then(r => window.location.replace('product'));
+      });
+    // .then(r => window.location.replace('product'));
     });
   }
   sendInfoPayMent(totalBill: number) {
